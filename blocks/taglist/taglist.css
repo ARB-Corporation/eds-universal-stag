@@ -14,7 +14,7 @@
 
 .taglist.taglist-title h5 {
   font-size: var(--heading-font-size-m);
-  font-family: var(--font-family--elza-semibold);
+  font-family: var(--font-family-elza-semibold);
   line-height: 28px;
   font-weight: 600;
   color: var(--black);
@@ -34,7 +34,7 @@
 .taglist.taglist-tags ul li {
   background-color: var(--grey);
   font-size: var(--body-font-size-xxs);
-  font-family: var(--font-family--elza-regular);
+  font-family: var(--font-family-elza-regular);
   line-height: 20px;
   font-weight: 400;
   color: var(--black);
