@@ -1,6 +1,6 @@
 .blog-list.blog-list-wrapper h4 {
     font-size: var(--heading-font-size-l);
-    font-family: elza-semibold, sans-serif;
+    font-family: var(--font-family--elza-semibold);
     line-height: 36px;
     font-weight: 600;
     color: var(--black);
@@ -40,7 +40,7 @@
 .blog-list.blog-list-wrapper .blog-card-tags ul li {
     background-color: var(--grey);
     color: var(--black);
-    font-family: elza-regular, sans-serif;
+    font-family: var( --font-family--elza-regular);
     font-size: var(--body-font-size-xxs);
     line-height: 20px;
     font-weight: 400;
@@ -50,7 +50,7 @@
 
 .blog-list.blog-list-wrapper .blog-card-description h5 {
     font-size: var(--heading-font-size-m);
-    font-family: elza-semibold, sans-serif;
+    font-family: var(--font-family--elza-semibold);
     line-height: 28px;
     font-weight: 600;
     color: var(--black);
@@ -60,7 +60,7 @@
 
 .blog-list.blog-list-wrapper .blog-card-description p {
     font-size: var(--body-font-size-xs);
-    font-family: elza-regular, sans-serif;
+    font-family: var( --font-family--elza-regular);
     line-height: 24px;
     font-weight: 400;
     color: var(--dark-grey);
@@ -70,7 +70,7 @@
 
 .blog-list.blog-list-wrapper .blog-card-btn a {
     font-size: var(--body-font-size-xxs);
-    font-family: elza-medium, sans-serif;
+    font-family: var(--font-family--elza-medium);
     line-height: 20px;
     font-weight: 500;
     color: var(--black);

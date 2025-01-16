@@ -34,6 +34,12 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* Font families */
+  --font-family--elza-regular: "elza-regular", sans-serif;
+  --font-family--elza-medium: "elza-medium", sans-serif; 
+  --font-family--elza-semibold: "elza-semibold", sans-serif;
+  --font-family--elza-bold: "elza-bold", sans-serif;
 }
 
 @media (width >=900px) {

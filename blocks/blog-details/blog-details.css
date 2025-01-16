@@ -1,6 +1,6 @@
 .blog-details.blog-title h1 {
     font-size: var(--heading-font-size-xxl);
-    font-family: elza-bold, sans-serif;
+    font-family: var(--font-family--elza-bold);
     line-height: 72px;
     font-weight: 700;
     color: var(--black);
@@ -9,7 +9,7 @@
 
 .blog-details.blog-time p{
     font-size: var(--body-font-size-xs);
-    font-family: elza-regular, sans-serif;
+    font-family: var(--font-family--elza-regular);
     line-height: 24px;
     font-weight: 400;
     color: var(--light-grey);
@@ -20,7 +20,7 @@
 
 .blog-details.blog-heading-primary h3 {
     font-size: var(--heading-font-size-xl);
-    font-family: elza-bold, sans-serif;
+    font-family: var(--font-family--elza-bold);
     line-height: 44px;
     font-weight: 700;
     color: var(--black);
@@ -31,7 +31,7 @@
 .blog-details.blog-description p,
 .blog-details.blog-description p strong {
     font-size: var(--body-font-size-s);
-    font-family: elza-regular, sans-serif;
+    font-family: var(--font-family--elza-regular);
     line-height: 28px;
     font-weight: 400;
     color: var(--dark-grey);
@@ -55,7 +55,7 @@
 
 .blog-details.blog-heading-secondary h4 {
     font-size: var(--heading-font-size-l);
-    font-family: elza-bold, sans-serif;
+    font-family: var(--font-family--elza-bold);
     line-height: 36px;
     font-weight: 700;
     color: var(--black);
@@ -74,7 +74,7 @@
 .blog-details.blog-links p a {
     text-decoration: underline;
     color: var(--dark-grey);
-    font-family: elza-medium, sans-serif;
+    font-family: var(--font-family--elza-medium);
     font-weight: 500;
 }
 
