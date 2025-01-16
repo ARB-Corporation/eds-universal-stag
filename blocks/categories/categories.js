@@ -5,8 +5,8 @@ import { getList } from '../../scripts/common.js';
 import decorateAccordion from '../accordion/accordion.js';
 
 export function capitalizeEveryWord(str) {
-  if (str.length === 0) return str;
-  return str.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  if (str?.length === 0) return str;
+  return str ? str.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : '';
 }
 
 export default async function decorate(block) {

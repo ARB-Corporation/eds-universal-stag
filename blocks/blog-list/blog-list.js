@@ -7,14 +7,14 @@ import { capitalizeEveryWord } from '../categories/categories.js';
 export default async function decorate(block) {
   const url = new URL(window.location.href);
   const list = await getQueryList();
-  const path = url.pathname.replace('/', '');
+  const path = url.pathname.split('/').slice(3).join('').replace('/', '');
   const items = list
     .filter((eachList) => (!eachList.path.endsWith(path) && eachList.tag?.includes(path)));
 
   block.querySelectorAll('.blog-card').forEach((element) => element.remove());
   block.firstElementChild.append(
     ...items.map((eachData) => {
-      const imgSrc = window.location.href.includes(url.origin) ? eachData.image.replace('/content/dam/arb-blogs/', '/images/') : eachData.image;
+      const imgSrc = (window.location.href.includes('localhost') || window.location.href.includes('.aem.live')) ? eachData.image.replace('/content/dam/arb/arb-blogs/', '/images/') : eachData.image;
       return div(
         { class: 'blog-card' },
         div({ class: 'blog-card-img' }, img({ src: imgSrc, alt: 'blog-list-img' })),
