@@ -1,0 +1,56 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.pagination.block .pagination {
+    flex-direction: row;
+}
+
+.pagination .page-btn {
+    padding: 5px 10px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 48px;
+    width: 48px;
+}
+
+.pagination .page-btn img {
+    filter: invert(1) grayscale(1) contrast(100%) brightness(0) saturate(0);
+}
+
+.pagination .page-btn.prev-btn img{
+    rotate: 180deg;
+}
+
+.pagination .page-btn.disabled {
+    background-color: #fff;
+    cursor: not-allowed;
+}
+
+.pagination .page-btn:disabled img {
+    filter: invert(1) grayscale(1) contrast(80%) brightness(90%) saturate(0.6);
+}
+
+.pagination > div {
+    display: flex;
+    gap: 4px;
+}
+
+.pagination .page-btn.active {
+    font-weight: bold;
+    background-color: #E9EBEE;
+    color: #000;
+    border: 1px solid #304F6C1A;
+}
+
+.pagination .ellipsis {
+    padding: 5px 10px;
+    color: #555;
+}

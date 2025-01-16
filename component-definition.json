@@ -56,7 +56,7 @@
             }
           }
         }
-      ]
+      ] 
     },
     {
       "title": "Sections",
@@ -152,6 +152,141 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Categories",
+          "id": "categories",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Categories",
+                  "model": "categories"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tags",
+          "id": "tags",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Tags",
+                  "model": "tags"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Taglist",
+          "id": "tag-list",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Taglist",
+                  "model": "tag-list"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Blog List",
+          "id": "blog-list",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Blog List",
+                  "model": "blog-list"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Blog Details",
+          "id": "blog-details",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Blog Details",
+                  "model": "blog-details"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Experience Fragment",
+          "id": "experience-fragment",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Experience Fragment",
+                  "model": "experience-fragment"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Container",
+          "id": "container",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Container",
+                  "model": "container"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Pagination",
+          "id": "pagination",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Pagination",
+                  "model": "pagination"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Klaviyo Script",
+          "id": "klaviyo-script",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Klaviyo Script",
+                  "model": "klaviyo-script"
                 }
               }
             }

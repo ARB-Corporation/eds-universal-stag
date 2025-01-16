@@ -1,28 +1,28 @@
-.hero-container .hero-wrapper {
+/* .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
-}
+} */
 
-.hero {
+/* .hero {
   position: relative;
   padding: 40px 24px;
   min-height: 300px;
-}
+} */
 
-.hero h1 {
+/* .hero h1 {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   color: var(--background-color);
-}
+} */
 
-.hero picture {
+/* .hero picture {
   position: absolute;
   z-index: -1;
   inset: 0;
   object-fit: cover;
   box-sizing: border-box;
-}
+} */
 
 .hero img {
   object-fit: cover;
@@ -30,8 +30,28 @@
   height: 100%;
 }
 
-@media (width >= 900px) {
+/* @media (width >= 900px) {
   .hero {
     padding: 40px 32px;
+  }
+}  */
+
+
+.hero.hero-img {
+  padding-top: 100px;
+}
+
+@media screen and (width <=768px) {
+  .section.hero-container:has(.hero.hero-img) {
+    margin: 0;
+  }
+
+  .hero.hero-img {
+    padding-top: 64px;
+  }
+
+  .hero.hero-img img {
+    height: 269px;
+    object-fit: unset;
   }
 }

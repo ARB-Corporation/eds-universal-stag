@@ -1,4 +1,5 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
+import { getQueryList } from '../../scripts/common.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -57,7 +58,7 @@ function focusNavSection() {
  * @param {Boolean} expanded Whether the element should be expanded or collapsed
  */
 function toggleAllNavSections(sections, expanded = false) {
-  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
+  sections?.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
     section.setAttribute('aria-expanded', expanded);
   });
 }
@@ -76,16 +77,16 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   // enable nav dropdown keyboard accessibility
-  const navDrops = navSections.querySelectorAll('.nav-drop');
+  const navDrops = navSections?.querySelectorAll('.nav-drop');
   if (isDesktop.matches) {
-    navDrops.forEach((drop) => {
+    navDrops?.forEach((drop) => {
       if (!drop.hasAttribute('tabindex')) {
         drop.setAttribute('tabindex', 0);
         drop.addEventListener('focus', focusNavSection);
       }
     });
   } else {
-    navDrops.forEach((drop) => {
+    navDrops?.forEach((drop) => {
       drop.removeAttribute('tabindex');
       drop.removeEventListener('focus', focusNavSection);
     });
@@ -101,6 +102,63 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
     window.removeEventListener('keydown', closeOnEscape);
     nav.removeEventListener('focusout', closeOnFocusLost);
   }
+}
+
+/* function getDirectTextContent(menuItem) {
+  const menuLink = menuItem.querySelector(':scope > a');
+  if (menuLink) {
+    return menuLink.textContent.trim();
+  }
+  return Array.from(menuItem.childNodes)
+    .filter((n) => n.nodeType === Node.TEXT_NODE)
+    .map((n) => n.textContent)
+    .join(' ');
+} */
+
+async function buildBreadcrumbsFromNavTree() {
+  const crumbs = [];
+
+  // const homeUrl = document.querySelector('.nav-brand a[href]').href;
+  const currentUrl = new URL(window.location.href);
+  const currentPath = currentUrl.pathname;
+  const queryList = await getQueryList();
+  const breadcrumbsList = queryList.filter((eachlist) => currentPath.includes(eachlist.path));
+  const placeholders = await fetchPlaceholders();
+  const homePlaceholder = placeholders.breadcrumbsHomeLabel || 'Home';
+  breadcrumbsList.sort((a, b) => a.path.split('/').length - b.path.split('/').length).forEach((link) => {
+    if (link.path === '/') {
+      crumbs.push({ title: homePlaceholder, url: link.path });
+    } else {
+      crumbs.push({ title: link.breadcrumbstitle, url: link.path });
+    }
+  });
+
+  return crumbs;
+}
+
+async function buildBreadcrumbs() {
+  const breadcrumbs = document.createElement('nav');
+  breadcrumbs.className = 'breadcrumbs';
+
+  const crumbs = await buildBreadcrumbsFromNavTree(document.querySelector('.nav-sections'), document.location.href);
+
+  const ol = document.createElement('ol');
+  ol.append(...crumbs.map((item) => {
+    const li = document.createElement('li');
+    if (item['aria-current']) li.setAttribute('aria-current', item['aria-current']);
+    if (item.url) {
+      const a = document.createElement('a');
+      a.href = item.url;
+      a.textContent = item.title;
+      li.append(a);
+    } else {
+      li.textContent = item.title;
+    }
+    return li;
+  }));
+
+  breadcrumbs.append(ol);
+  return breadcrumbs;
 }
 
 /**
@@ -146,6 +204,14 @@ export default async function decorate(block) {
     });
   }
 
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const search = navTools.querySelector('a[href*="search"]');
+    if (search && search.textContent === '') {
+      search.setAttribute('aria-label', 'Search');
+    }
+  }
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -163,4 +229,10 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  // const heroWrapper = document.querySelector('.hero-wrapper');
+
+  if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
+    navWrapper.append(await buildBreadcrumbs());
+  }
 }

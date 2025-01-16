@@ -5,6 +5,7 @@ Your project's description...
 - Preview: https://main--{repo}--{owner}.aem.page/
 - Live: https://main--{repo}--{owner}.aem.live/
 
+
 ## Documentation
 
 Before using the aem-boilerplate, we recommand you to go through the documentation on [www.aem.live](https://www.aem.live/docs/) and [experienceleague.adobe.com](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/authoring), more specifically:
@@ -20,6 +21,7 @@ Furthremore, we encourage you to watch the recordings of any of our previous pre
 
 - nodejs 18.3.x or newer
 - AEM Cloud Service release 2024.8 or newer (>= `17465`)
+
 
 ## Installation
 
@@ -40,3 +42,4 @@ npm run lint
 1. Install the [AEM CLI](https://github.com/adobe/helix-cli): `npm install -g @adobe/aem-cli`
 1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000`)
 1. Open the `{repo}` directory in your favorite IDE and start coding :)
+
