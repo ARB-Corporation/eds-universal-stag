@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p48457-e1275402.adobeaemcloud.com/bin/franklin.delivery/Tekno-Point/arb-website-eds-en/main"
+    url: "https://author-p144166-e1487988.adobeaemcloud.com/bin/franklin.delivery/ARB-Corporation/eds-universal/main"
     type: "markup"
     suffix: ".html"

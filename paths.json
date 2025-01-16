@@ -1,12 +1,12 @@
 {
   "mappings": [
-    "/content/arb-blogs/:/",
-    "/content/arb-blogs/configuration:/.helix/config.json",
-    "/content/arb-blogs/placeholders:/placeholders.json",
-    "/content/arb-blogs/metadata:/metadata.json",
-    "/content/arb-blogs/redirects:/redirects.json"
+    "/content/arb-eds/:/",
+    "/content/arb-eds/configuration:/.helix/config.json",
+    "/content/arb-eds/placeholders:/placeholders.json",
+    "/content/arb-eds/metadata:/metadata.json",
+    "/content/arb-eds/redirects:/redirects.json"
   ],
   "includes": [
-    "/content/arb-blogs/"
+    "/content/arb-eds/"
   ]
 }

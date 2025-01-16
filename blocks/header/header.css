@@ -27,3 +27,12 @@ header {
 /* header css end */
 
 
+.header-wrapper .nav-wrapper .breadcrumbs ol li a {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.header-wrapper .nav-wrapper .breadcrumbs ol li:empty::after a{
+  color: #454B58;
+}
