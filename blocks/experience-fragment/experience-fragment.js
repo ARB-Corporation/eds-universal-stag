@@ -3,7 +3,7 @@ export async function appendXF(block, xfPath) {
   if (resp.ok) {
     let str = await resp.text();
     const { location } = window;
-    if (location.href.includes('localhost') || location.href.includes('--arb-website-eds-en--')) {
+    if (location.href.includes('localhost') || location.href.includes('.aem.live')) {
       str = str.replaceAll(
         '/etc.clientlibs/',
         'https://publish-p144166-e1487988.adobeaemcloud.com/etc.clientlibs/',
