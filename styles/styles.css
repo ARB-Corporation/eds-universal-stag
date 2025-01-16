@@ -370,7 +370,7 @@ main .section.highlight {
 
 /* breadcrumbs css start */
 .breadcrumbs {
-  padding-top: 48px;
+  margin-top: 48px;
 }
 
 .breadcrumbs ol {
@@ -401,7 +401,7 @@ main .section.highlight {
 
 @media screen and (width <= 768px) {
   .breadcrumbs {
-    padding-top: 16px;
+    margin-top: 16px;
   }
 
   .breadcrumbs ol {
