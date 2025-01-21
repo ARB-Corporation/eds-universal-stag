@@ -38,7 +38,7 @@
 }
 
 .blog-list.blog-list-wrapper .blog-card-tags ul li {
-    background-color: var(--grey);
+    background-color: var(--eds-grey);
     color: var(--eds-black);
     font-family: var( --font-family-elza-regular);
     font-size: var(--body-font-size-xxs);
