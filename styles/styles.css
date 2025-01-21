@@ -1,22 +1,22 @@
 :root {
   /* colors */
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --eds-light-color: #f8f8f8;
+  --eds-dark-color: #505050;
+  --eds-text-color: #131313;
+  --eds-link-color: #3b63fb;
+  --eds-link-hover-color: #1d3ecf;
 
   /* ARB site colors */
-  --background-color: white;
-  --black: #000;
-  --primary-red: #ED1C24;
-  --grey: #EBEBEB;
-  --dark-grey: #454B58;
-  --light-grey: #72747B;
-  --davy-grey: #555;
-  --ashy-blue: #9299A8;
-  --white: #FFF;
-  --lavendar-wisp: #E9EBEE;
+  --eds-background-color: white;
+  --eds-black: #000;
+  --eds-primary-red: #ED1C24;
+  --eds-grey: #EBEBEB;
+  --eds-dark-grey: #454B58;
+  --eds-light-grey: #72747B;
+  --eds-davy-grey: #555;
+  --eds-ashy-blue: #9299A8;
+  --eds-white: #FFF;
+  --eds-lavendar-wisp: #E9EBEE;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -325,7 +325,7 @@ main>.section:first-of-type {
 }
 
 /* flex classes */
-.flex-container {
+.arb-eds-flex-container {
   display: flex;
 }
 
@@ -350,20 +350,20 @@ main>.section:first-of-type {
   width: 40%;
 }
 
-.section.flex-container.blog-wrapper {
+.section.arb-eds-flex-container.blog-wrapper {
   gap: 64px;
 }
 
 /* section metadata */
 main .section.light,
 main .section.highlight {
-  background-color: var(--light-color);
+  background-color: var(--eds-light-color);
   margin: 0;
   padding: 40px 0;
 }
 
 @media screen and (width <=768px) {
-  .section.flex-container.blog-wrapper {
+  .section.arb-eds-flex-container.blog-wrapper {
     flex-direction: column;
   }
 }
@@ -380,14 +380,14 @@ main .section.highlight {
 
 .breadcrumbs ol li > a {
   font-size: var(--body-font-size-xxs);
-  font-family: elza-medium, sans-serif;
+  font-family: var(--font-family-elza-medium);
   line-height: 24px;
   font-weight: 500;
-  color: var(--dark-grey);
+  color: var(--eds-dark-grey);
 }
 
 .breadcrumbs ol li:not(:last-child) a {
-  color: var(--black);
+  color: var(--eds-black);
 }
 
 .breadcrumbs ol li:not(:last-child) a::after {
@@ -395,7 +395,7 @@ main .section.highlight {
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: var(--ashy-blue);
+  color: var(--eds-ashy-blue);
   padding: 0 8px;
 }
 

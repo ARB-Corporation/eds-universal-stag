@@ -3,7 +3,7 @@
     font-family: var(--font-family-elza-bold);
     line-height: 72px;
     font-weight: 700;
-    color: var(--black);
+    color: var(--eds-black);
     margin: 0;
 }
 
@@ -12,7 +12,7 @@
     font-family: var(--font-family-elza-regular);
     line-height: 24px;
     font-weight: 400;
-    color: var(--light-grey);
+    color: var(--eds-light-grey);
     padding-top: 12px;
     margin: 0;
     padding-bottom: 32px;
@@ -23,7 +23,7 @@
     font-family: var(--font-family-elza-bold);
     line-height: 44px;
     font-weight: 700;
-    color: var(--black);
+    color: var(--eds-black);
     margin: 0;
     padding-top: 32px;
 }
@@ -34,7 +34,7 @@
     font-family: var(--font-family-elza-regular);
     line-height: 28px;
     font-weight: 400;
-    color: var(--dark-grey);
+    color: var(--eds-dark-grey);
     margin: 0;
     padding-top: 32px;
 }
@@ -58,7 +58,7 @@
     font-family: var(--font-family-elza-bold);
     line-height: 36px;
     font-weight: 700;
-    color: var(--black);
+    color: var(--eds-black);
     margin: 0;
     padding-top: 32px;
 } 
@@ -73,7 +73,7 @@
 
 .blog-details.blog-links p a {
     text-decoration: underline;
-    color: var(--dark-grey);
+    color: var(--eds-dark-grey);
     font-family: var(--font-family-elza-medium);
     font-weight: 500;
 }
