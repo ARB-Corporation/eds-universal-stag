@@ -1,5 +1,6 @@
 .blog-list.blog-list-wrapper h4 {
-    font-size: 32px;
+    font-size: var(--heading-font-size-l);
+    font-family: var(--font-family-elza-semibold);
     line-height: 36px;
     font-weight: 600;
     color: var(--black);
@@ -39,7 +40,8 @@
 .blog-list.blog-list-wrapper .blog-card-tags ul li {
     background-color: var(--grey);
     color: var(--black);
-    font-size: 14px;
+    font-family: var( --font-family-elza-regular);
+    font-size: var(--body-font-size-xxs);
     line-height: 20px;
     font-weight: 400;
     border-radius: 8px;
@@ -47,7 +49,8 @@
 }
 
 .blog-list.blog-list-wrapper .blog-card-description h5 {
-    font-size: 24px;
+    font-size: var(--heading-font-size-m);
+    font-family: var(--font-family-elza-semibold);
     line-height: 28px;
     font-weight: 600;
     color: var(--black);
@@ -56,7 +59,8 @@
 }
 
 .blog-list.blog-list-wrapper .blog-card-description p {
-    font-size: 16px;
+    font-size: var(--body-font-size-xs);
+    font-family: var( --font-family-elza-regular);
     line-height: 24px;
     font-weight: 400;
     color: var(--dark-grey);
@@ -65,14 +69,14 @@
 }
 
 .blog-list.blog-list-wrapper .blog-card-btn a {
-    font-size: 14px;
+    font-size: var(--body-font-size-xxs);
+    font-family: var(--font-family-elza-medium);
     line-height: 20px;
     font-weight: 500;
     color: var(--black);
     padding: 8px 24px;
     border: 1px solid #9299A84D;
     border-radius: 3px;
-    text-decoration: none;
 }
 
 .blog-list.blog-list-wrapper .blog-card-img {
@@ -80,12 +84,17 @@
     width: 296px;
 }
 
+.blog-list.blog-list-wrapper .blog-card-img img {
+    max-width: unset;
+    height: 296px;
+}
+
 @media screen and (width <= 768px) {
     .blog-list.blog-list-wrapper .blog-card {
         gap: 16px;
     }
 
-    .section.flex-container.blog-wrapper {
+    .blog-list.blog-list-wrapper .blog-card.blog-display-flex {
         flex-direction: column;
     }
 
@@ -108,12 +117,12 @@
     }
 
     .blog-list.blog-list-wrapper h4 {
-        font-size: 20px;
+        font-size: var(--heading-font-size-s);
         line-height: 24px;
     }
 
     .blog-list.blog-list-wrapper .blog-card-description h5 {
-        font-size: 18px;
+        font-size: var(--heading-font-size-xs);
         line-height: 20px;
     }
 }

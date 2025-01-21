@@ -4,37 +4,20 @@ import {
 } from '../../scripts/dom-helpers.js';
 import { capitalizeEveryWord } from '../categories/categories.js';
 
-// const domain = ['localhost', 'main--'];
-// async function getBlogList() {
-//   const resp = await fetch('/query-index.json');
-//   const jsonData = await resp.json();
-//   const { data } = jsonData;
-//   const list = [];
-//   data.forEach(elem=>{
-//     if(elem.tag!==""){
-//         l.push(e)
-//     }})
-//   return list;
-// }
-
 export default async function decorate(block) {
-  // document.addEventListener('update-blog-list', (e) => {
   const url = new URL(window.location.href);
   const list = await getQueryList();
-  //   console.log(list);
-  const path = url.pathname.replace('/', '');
+  const path = url.pathname.split('/').slice(3).join('').replace('/', '');
   const items = list
-    .filter((eachList) => (!eachList.path.endsWith(path) && eachList.tag.includes(path)));
+    .filter((eachList) => (!eachList.path.endsWith(path) && eachList.tag?.includes(path)));
 
-  // const { data } = e.detail;
-  // debugger;
   block.querySelectorAll('.blog-card').forEach((element) => element.remove());
   block.firstElementChild.append(
     ...items.map((eachData) => {
-      const imgSrc = window.location.href.includes(url.origin) ? eachData.image.replace('/content/dam/arb-blogs/', '/images/') : eachData.image;
+      const imgSrc = (window.location.href.includes('localhost') || window.location.href.includes('.aem.live')) ? eachData.image.replace('/content/dam/arb/arb-blogs/', '/images/') : eachData.image;
       return div(
         { class: 'blog-card' },
-        div({ class: 'blog-card-img' }, img({ src: imgSrc })),
+        div({ class: 'blog-card-img' }, img({ src: imgSrc, alt: 'blog-list-img' })),
         div(
           { class: 'blog-card-content' },
           div(
@@ -49,6 +32,5 @@ export default async function decorate(block) {
       );
     }),
   );
-  // });
   return block;
 }

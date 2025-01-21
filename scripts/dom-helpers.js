@@ -1,36 +1,4 @@
-/*
- * Copyright 2023 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
- */
-
 /* eslint-disable no-param-reassign */
-
-/**
- * Example Usage:
- *
- * domEl('main',
- *  div({ class: 'card' },
- *  a({ href: item.path },
- *    div({ class: 'card-thumb' },
- *     createOptimizedPicture(item.image, item.title, 'lazy', [{ width: '800' }]),
- *    ),
- *   div({ class: 'card-caption' },
- *      h3(item.title),
- *      p({ class: 'card-description' }, item.description),
- *      p({ class: 'button-container' },
- *       a({ href: item.path, 'aria-label': 'Read More', class: 'button primary' }, 'Read More'),
- *     ),
- *   ),
- *  ),
- * )
- */
 
 /**
  * Helper for more concisely generating DOM Elements with attributes and children
@@ -67,10 +35,6 @@ export function domEl(tag, ...items) {
   return element;
 }
 
-/*
-    More short hand functions can be added for very common DOM elements below.
-    domEl function from above can be used for one off DOM element occurrences.
-  */
 export function div(...items) { return domEl('div', ...items); }
 export function p(...items) { return domEl('p', ...items); }
 export function a(...items) { return domEl('a', ...items); }
@@ -97,3 +61,4 @@ export function article(...items) { return domEl('article', ...items); }
 export function strong(...items) { return domEl('strong', ...items); }
 export function select(...items) { return domEl('select', ...items); }
 export function option(...items) { return domEl('option', ...items); }
+export function script(...items) { return domEl('script', ...items); }

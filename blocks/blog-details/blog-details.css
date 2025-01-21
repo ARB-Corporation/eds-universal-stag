@@ -1,5 +1,6 @@
 .blog-details.blog-title h1 {
     font-size: var(--heading-font-size-xxl);
+    font-family: var(--font-family-elza-bold);
     line-height: 72px;
     font-weight: 700;
     color: var(--black);
@@ -8,6 +9,7 @@
 
 .blog-details.blog-time p{
     font-size: var(--body-font-size-xs);
+    font-family: var(--font-family-elza-regular);
     line-height: 24px;
     font-weight: 400;
     color: var(--light-grey);
@@ -18,6 +20,7 @@
 
 .blog-details.blog-heading-primary h3 {
     font-size: var(--heading-font-size-xl);
+    font-family: var(--font-family-elza-bold);
     line-height: 44px;
     font-weight: 700;
     color: var(--black);
@@ -28,6 +31,7 @@
 .blog-details.blog-description p,
 .blog-details.blog-description p strong {
     font-size: var(--body-font-size-s);
+    font-family: var(--font-family-elza-regular);
     line-height: 28px;
     font-weight: 400;
     color: var(--dark-grey);
@@ -51,6 +55,7 @@
 
 .blog-details.blog-heading-secondary h4 {
     font-size: var(--heading-font-size-l);
+    font-family: var(--font-family-elza-bold);
     line-height: 36px;
     font-weight: 700;
     color: var(--black);
@@ -69,11 +74,13 @@
 .blog-details.blog-links p a {
     text-decoration: underline;
     color: var(--dark-grey);
+    font-family: var(--font-family-elza-medium);
     font-weight: 500;
 }
 
 .blog-details.blog-image picture img {
     padding-top: 32px;
+    height: 449px;
 }
 
 @media screen and (width <= 768px) {
@@ -83,5 +90,9 @@
       
     .section.width-40 > div:nth-child(2) {
         width: 100%;
+    }
+
+    .blog-details.blog-image picture img {
+        height: 361px;
     }
 }

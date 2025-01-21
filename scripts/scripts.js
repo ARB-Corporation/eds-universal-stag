@@ -1,3 +1,5 @@
+import { autoBlockBreadcrumb } from './common.js';
+
 import {
   loadHeader,
   loadFooter,
@@ -65,6 +67,7 @@ async function loadFonts() {
 function buildAutoBlocks() {
   try {
     // TODO: add auto block, if needed
+    autoBlockBreadcrumb();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

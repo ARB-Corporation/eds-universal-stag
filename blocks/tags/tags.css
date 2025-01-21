@@ -16,6 +16,7 @@
     padding: 4px 16px;
     font-size: 14px;
     line-height: 20px;
+    font-family: var(--font-family-elza-regular);
     font-weight: 400;
     color: var(--black);
 }
