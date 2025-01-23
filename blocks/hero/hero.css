@@ -13,7 +13,7 @@
 
 @media screen and (width <=768px) {
   .section.hero-container:has(.hero.hero-img) {
-    margin: 0 0 24px 0;
+    margin: 0 0 24px;
   }
 
   .hero.hero-img {
