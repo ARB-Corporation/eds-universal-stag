@@ -141,7 +141,7 @@ pre {
 }
 
 main>div {
-  margin: 40px 16px;
+  margin: 0 16px;
 }
 
 input,
@@ -364,6 +364,7 @@ main .section.highlight {
 
 @media screen and (width <=768px) {
   .section.arb-eds-flex-container.blog-wrapper {
+    gap: 40px;
     flex-direction: column;
   }
 }
@@ -407,6 +408,9 @@ main .section.highlight {
   .breadcrumbs ol {
     padding: 0 16px;
   }
-}
 
+  .breadcrumbs ol li > a {
+    color: var(--eds-light-grey);
+  }
+}
 /* breadcrumbs css end */

@@ -32,6 +32,7 @@
 .blog-list.blog-list-wrapper .blog-card-tags ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     margin: 0;
     padding: 0;
@@ -73,8 +74,9 @@
     font-family: var(--font-family-elza-medium);
     line-height: 20px;
     font-weight: 500;
+    display: inline-block;
     color: var(--eds-black);
-    padding: 8px 24px;
+    padding: 13.2px 24.38px;
     border: 1px solid #9299A84D;
     border-radius: 3px;
 }
@@ -92,6 +94,7 @@
 @media screen and (width <= 768px) {
     .blog-list.blog-list-wrapper .blog-card {
         gap: 16px;
+        margin-bottom: 0;
     }
 
     .blog-list.blog-list-wrapper .blog-card.blog-display-flex {
