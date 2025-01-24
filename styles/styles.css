@@ -407,6 +407,7 @@ main .section.highlight {
 
   .breadcrumbs ol {
     padding: 0 16px;
+    flex-wrap: wrap;
   }
 
   .breadcrumbs ol li > a {
