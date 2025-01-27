@@ -119,7 +119,11 @@ export async function getFetchAPI(url, type = 'json') {
     redirect: 'follow',
   };
 
-  const resp = await fetch(url, requestOptions);
-  const text = type === 'json' ? await resp.json() : await resp.text();
-  return text;
+  try {
+    const resp = await fetch(url, requestOptions);
+    const text = type === 'json' ? await resp.json() : await resp.text();
+    return text;
+  } catch (error) {
+    return error;
+  }
 }
