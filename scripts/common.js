@@ -108,3 +108,18 @@ export async function autoBlockBreadcrumb() {
     }
   }
 }
+
+export async function getFetchAPI(url, type = 'json') {
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', 'Basic YWRtaW46RGVwdEBhcmI=');
+
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow',
+  };
+
+  const resp = await fetch(url, requestOptions);
+  const text = type === 'json' ? await resp.json() : await resp.text();
+  return text;
+}
