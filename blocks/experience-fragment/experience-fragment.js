@@ -1,7 +1,7 @@
 import { getFetchAPI } from '../../scripts/common.js';
 
 export async function appendXF(block, xfPath) {
-  const resp = await getFetchAPI(xfPath, 'text');
+  const resp = await getFetchAPI(xfPath);
   if (resp.ok) {
     let str = await resp.text();
     const { location } = window;
