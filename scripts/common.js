@@ -108,3 +108,22 @@ export async function autoBlockBreadcrumb() {
     }
   }
 }
+
+export async function getFetchAPI(url) {
+  // const myHeaders = new Headers();
+  // myHeaders.append('Authorization', 'Basic YWRtaW46RGVwdEBhcmI=');
+
+  // const requestOptions = {
+  //   method: 'GET',
+  //   headers: myHeaders,
+  //   redirect: 'follow',
+  // };
+
+  try {
+    const resp = await fetch(url);
+    // const text = type === 'json' ? await resp.json() : await resp.text();
+    return resp;
+  } catch (error) {
+    return error;
+  }
+}
