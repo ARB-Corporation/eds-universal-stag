@@ -89,6 +89,7 @@
 .blog-list.blog-list-wrapper .blog-card-img img {
     max-width: unset;
     height: 296px;
+    width: inherit;
 }
 
 @media screen and (width <= 768px) {
