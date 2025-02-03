@@ -4,7 +4,7 @@
   border-radius: 3px;
   border: 1px solid #304F6C1A;
   padding: 32px 24px;
-  background-color: var(--white);
+  background-color: var(--eds-white);
   margin-bottom: 24px;
 }
 
@@ -17,7 +17,7 @@
   font-family: var(--font-family-elza-semibold);
   line-height: 28px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--eds-black);
   margin: 0;
   padding-bottom: 24px;
 }
@@ -32,12 +32,12 @@
 }
 
 .taglist.taglist-tags ul li {
-  background-color: var(--grey);
+  background-color: var(--eds-grey);
   font-size: var(--body-font-size-xxs);
   font-family: var(--font-family-elza-regular);
   line-height: 20px;
   font-weight: 400;
-  color: var(--black);
+  color: var(--eds-black);
   padding: 4px 16px;
   border-radius: 8px;
 }

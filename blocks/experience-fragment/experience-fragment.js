@@ -1,5 +1,7 @@
+import { getFetchAPI } from '../../scripts/common.js';
+
 export async function appendXF(block, xfPath) {
-  const resp = await fetch(xfPath);
+  const resp = await getFetchAPI(xfPath);
   if (resp.ok) {
     let str = await resp.text();
     const { location } = window;
@@ -58,7 +60,11 @@ export async function appendXF(block, xfPath) {
 }
 
 export default async function decorate(block) {
-  const xfPath = block.querySelector('a')?.href;
-  block.innerHTML = '';
-  await appendXF(block, xfPath);
+  try {
+    const xfPath = block.querySelector('a')?.href;
+    block.innerHTML = '';
+    await appendXF(block, xfPath);
+  } catch (error) {
+    console.warn(error); // eslint-disable-line
+  }
 }

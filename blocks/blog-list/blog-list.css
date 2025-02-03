@@ -3,7 +3,7 @@
     font-family: var(--font-family-elza-semibold);
     line-height: 36px;
     font-weight: 600;
-    color: var(--black);
+    color: var(--eds-black);
     padding-bottom: 24px;
     margin: 0;
     border-bottom: 1px solid #304F6C1A;
@@ -32,14 +32,15 @@
 .blog-list.blog-list-wrapper .blog-card-tags ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     margin: 0;
     padding: 0;
 }
 
 .blog-list.blog-list-wrapper .blog-card-tags ul li {
-    background-color: var(--grey);
-    color: var(--black);
+    background-color: var(--eds-grey);
+    color: var(--eds-black);
     font-family: var( --font-family-elza-regular);
     font-size: var(--body-font-size-xxs);
     line-height: 20px;
@@ -53,7 +54,7 @@
     font-family: var(--font-family-elza-semibold);
     line-height: 28px;
     font-weight: 600;
-    color: var(--black);
+    color: var(--eds-black);
     margin: 0;
     padding-top: 16px;
 }
@@ -63,7 +64,7 @@
     font-family: var( --font-family-elza-regular);
     line-height: 24px;
     font-weight: 400;
-    color: var(--dark-grey);
+    color: var(--eds-dark-grey);
     margin: 0;
     padding-top: 16px;
 }
@@ -73,8 +74,9 @@
     font-family: var(--font-family-elza-medium);
     line-height: 20px;
     font-weight: 500;
-    color: var(--black);
-    padding: 8px 24px;
+    display: inline-block;
+    color: var(--eds-black);
+    padding: 13.2px 24.38px;
     border: 1px solid #9299A84D;
     border-radius: 3px;
 }
@@ -87,11 +89,13 @@
 .blog-list.blog-list-wrapper .blog-card-img img {
     max-width: unset;
     height: 296px;
+    width: inherit;
 }
 
 @media screen and (width <= 768px) {
     .blog-list.blog-list-wrapper .blog-card {
         gap: 16px;
+        margin-bottom: 0;
     }
 
     .blog-list.blog-list-wrapper .blog-card.blog-display-flex {

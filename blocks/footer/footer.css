@@ -3,7 +3,7 @@
 }
 
 .footer-container>.cmp-container>.container:nth-child(2)>.cmp-container>.container:first-child .cmp-button {
-  color: var(--black);
+  color: var(--eds-black);
 }
 
 .footer .section.experience-fragment-container .experience-fragment-wrapper .experience-fragment .root {
