@@ -4,13 +4,6 @@ import {
 } from '../../scripts/dom-helpers.js';
 import { capitalizeEveryWord } from '../categories/categories.js';
 
-export default async function decorate(block) {
-  const list = await getQueryList();
-  const url = new URL(window.location.href);
-  const path = url.pathname.split('/').slice(3).join('').replace('/', '');
-  const items = list.filter((eachList) => (!eachList.path.endsWith(path) && eachList.tag?.includes(path)));
-  renderBlockList(block, items);
-}
 export async function renderBlockList(block, items) {
   block.querySelectorAll('.blog-card').forEach((element) => element.remove());
   block.firstElementChild.append(
@@ -34,4 +27,13 @@ export async function renderBlockList(block, items) {
     }),
   );
   return block;
+}
+
+export default async function decorate(block) {
+  const list = await getQueryList();
+  const url = new URL(window.location.href);
+  const path = url.pathname.split('/').slice(3).join('').replace('/', '');
+  const items = list
+    .filter((eachList) => (!eachList.path.endsWith(path) && eachList.tag?.includes(path)));
+  renderBlockList(block, items);
 }

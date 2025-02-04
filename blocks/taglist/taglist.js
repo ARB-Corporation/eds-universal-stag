@@ -9,16 +9,21 @@ export function capitalizeFirstLet(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+async function getListByTagName(tagName) {
+  const list = await getQueryList();
+  return list.filter((eachList) => eachList.tag?.includes(tagName));
+}
+
 export default async function decorate(block) {
   const list = await getList();
   const allTag = [];
-  list.map((eachList) => eachList.tags.map((eachData) => {
-    if (eachList.path.includes(location.pathname)) {
+  list.forEach((eachList) => eachList.tags.forEach((eachData) => {
+    if (window.location.pathname.includes(eachList.path.split('/').slice(0, -1).join('/'))) {
       allTag.push(li({
         'data-tag-name': eachData.tag,
-        async onClick(e) {
-          const list = await getListByTagName(this.dataset.tagName);
-          renderBlockList(document.querySelector('.blog-list'), list);
+        async onClick() {
+          const listByTagName = await getListByTagName(this.dataset.tagName);
+          renderBlockList(document.querySelector('.blog-list'), listByTagName);
           pagination(document.querySelector('.pagination'));
         },
       }, capitalizeFirstLet(eachData.tag)));
@@ -36,9 +41,4 @@ export default async function decorate(block) {
   if (window.innerWidth < 769) {
     decorateAccordion(block);
   }
-}
-
-async function getListByTagName(tagName) {
-  const list = await getQueryList();
-  return list.filter((eachList) => eachList.tag?.includes(tagName));
 }
