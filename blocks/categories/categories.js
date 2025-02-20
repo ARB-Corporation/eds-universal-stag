@@ -16,7 +16,7 @@ export default async function decorate(block) {
     div(
       ul(
 
-        ...list.map((eachData) => li(a({ href: `${eachData.path.split('/').slice(0, -1).join('/')}` }, capitalizeEveryWord((`${eachData.category}`))), span(`${eachData.count}`))),
+        ...list.map((eachData) => li(a({ href: `${eachData.path}` }, capitalizeEveryWord((`${eachData.category}`))), span(`${eachData.count}`))),
       ),
     ),
   );

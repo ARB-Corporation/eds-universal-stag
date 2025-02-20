@@ -23,8 +23,11 @@ export default async function decorate(block) {
         'data-tag-name': eachData.tag,
         async onClick() {
           const listByTagName = await getListByTagName(this.dataset.tagName);
-          renderBlockList(document.querySelector('.blog-list'), listByTagName);
-          pagination(document.querySelector('.pagination'));
+          const blogListBlock = document.querySelector('.blog-list');
+          if (blogListBlock) {
+            renderBlockList(blogListBlock, listByTagName);
+            pagination(document.querySelector('.pagination'));
+          }
         },
       }, capitalizeFirstLet(eachData.tag)));
     }
