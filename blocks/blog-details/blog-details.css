@@ -9,6 +9,7 @@
 
 @media screen and (width <= 768px){
     .blog-details.blog-title h1 {
+        font-size: 40px;
         line-height: 44px;
     } 
 }

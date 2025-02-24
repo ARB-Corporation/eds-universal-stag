@@ -413,12 +413,6 @@ main .section.highlight {
   .breadcrumbs ol li > a {
     color: var(--eds-light-grey);
   }
-
-  :root {
-    /* heading sizes */
-    --heading-font-size-xxl: 40px;
-  }
-
   
 }
 
