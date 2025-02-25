@@ -1,3 +1,5 @@
+import { isDesktop } from '../header/header.js';
+
 /* eslint-disable */ 
 function initPagination(element) {
   const items = Array.from(document.querySelectorAll('.blog-card')); // 50 items
@@ -45,15 +47,19 @@ function initPagination(element) {
     }
 
     // Show 3 siblings before and after the current page
-    const startPage = Math.max(1, currentPage - 3);
-    const endPage = Math.min(totalPages, currentPage + 3);
+    let number = 3
+    if(!isDesktop.matches){
+       number = 1
+    }
+    const startPage = Math.max(1, currentPage - number);
+    const endPage = Math.min(totalPages, currentPage + number);
 
     for (let i = startPage; i <= endPage; i++) {
       createPageButton(i, pageNumbersContainer);
     }
 
     // Always show the last page
-    if (currentPage < totalPages - 3) {
+    if (currentPage < totalPages - number) {
       createEllipsis(pageNumbersContainer);
       createPageButton(totalPages, pageNumbersContainer);
     }
