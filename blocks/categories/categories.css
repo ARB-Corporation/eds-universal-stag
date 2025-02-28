@@ -22,10 +22,20 @@
 
 .categories.categories-list ul {
     list-style: none;
-    padding: 24px 0 0;
+    padding: 24px 10px 0 0;
     margin: 0;
     border-top: 1px solid #304F6C1A;
+    height: 145px;
+    overflow-y: scroll;
 }
+
+.categories.categories-list ul::-webkit-scrollbar{
+    width: 4px;
+}
+
+.categories.categories-list ul::-webkit-scrollbar-thumb {
+    background: #72747B;
+  }
 
 .categories.categories-list ul li,
 .categories.categories-list ul li span,

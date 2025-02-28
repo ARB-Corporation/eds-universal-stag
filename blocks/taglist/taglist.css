@@ -28,6 +28,7 @@
   margin: 0;
   border-top: 1px solid #304F6C1A;
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -40,6 +41,10 @@
   color: var(--eds-black);
   padding: 4px 16px;
   border-radius: 8px;
+}
+
+.taglist.taglist-tags ul li.active {
+  background-color: darkgray;
 }
 
 

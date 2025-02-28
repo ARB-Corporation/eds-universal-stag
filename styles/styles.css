@@ -413,6 +413,7 @@ main .section.highlight {
   .breadcrumbs ol li > a {
     color: var(--eds-light-grey);
   }
+  
 }
 
 /* breadcrumbs css end */

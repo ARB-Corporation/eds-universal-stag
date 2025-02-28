@@ -625,6 +625,12 @@
         "name": "class-name",
         "value": "",
         "label": "Klaviyo Class"
+      },
+      {
+        "component": "richtext",
+        "name": "rte",
+        "value": "",
+        "label": "Klaviyo Content"
       }
     ]
   }

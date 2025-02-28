@@ -1,4 +1,4 @@
-import { fetchPlaceholders, getMetadata } from './aem.js';
+import { fetchPlaceholders, getMetadata, toClassName } from './aem.js';
 import Category from './category.js';
 import Tag from './tag.js';
 
@@ -26,12 +26,14 @@ export async function getList() {
   const data = await getQueryList();
   const list = [];
   data.forEach((eachData, index) => {
+    const { path } = eachData;
     const rawTags = eachData.tag ? eachData.tag.trim().split(',') : [];
     rawTags.forEach((eachRawTag) => {
       const category = eachRawTag.split('/')[0].split(':')[1];
+      const categoryPath = `${path.split('/').slice(0, -2).join('/')}\\${toClassName(category)}`;
       const tag = eachRawTag.split('/')[1];
       const tagObj = new Tag(tag);
-      const categoryObj = new Category(category, tagObj, eachData.path, index);
+      const categoryObj = new Category(category, tagObj, categoryPath, index);
       const isCategoryExit = list.filter((listData) => listData.category === categoryObj.category);
       if (isCategoryExit.length) {
         const currentCategory = isCategoryExit[0];
