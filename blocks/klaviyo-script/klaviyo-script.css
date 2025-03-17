@@ -1,3 +1,79 @@
 .no {
     background-color: red;
 }
+
+.klaviyo-script > div:nth-child(1) div {
+    border: 1px solid #304F6C1A;
+    border-bottom: none;
+    padding-top: 32px;
+}
+
+.klaviyo-script{
+    padding-bottom: 24px !important;
+}
+
+.klaviyo-script div:nth-child(1) div p{
+    padding-inline: 10px;
+    font-family: var(--font-family-elza-semibold);
+    font-weight: 600;
+    font-size: var(--heading-font-size-m);
+    line-height: 115.99999999999999%;
+    letter-spacing: 3%;
+    color: #000000;
+}
+
+.klaviyo-script .klaviyo-form.needsclick{
+     border: 1px solid #304F6C1A !important;
+     border-top: none !important;
+     padding-bottom: 22px !important;  /*button has 10px margin bottom*/
+}
+
+@media screen and (width <=768px) {
+    .klaviyo-script div:nth-child(1) div p{
+       font-size: 18px;
+       position: relative;
+       margin: 0px;
+    }
+
+    .klaviyo-script div:nth-child(1) div p::after{
+        content: url(/icons/expand_more.svg);
+        position: absolute;
+        right: 20px;
+        top: -4px;
+    }
+
+    .klaviyo-script.open div:nth-child(1) div p::after{
+        top: -12px;
+        transform: rotate(180deg);
+    }
+
+    .closed{
+        border: 1px solid #304F6C1A;
+    }
+
+    .closed > div:nth-child(1) div{
+        border: none;
+        padding-top: 34px;
+    }
+
+    .klaviyo-script .klaviyo-form.needsclick{
+        display: none !important;
+    }
+
+    .klaviyo-script{
+        border: 1px solid #304F6C1A;
+    }
+
+    .dsp-none{
+        display: none !important;
+    }
+
+    .kl-private-reset-css-Xuajs1.dsp-block{
+        display: block !important;
+    }
+
+    .kl-private-reset-css-Xuajs1.dsp-block .klaviyo-form{
+        display: flex !important;
+    }
+}
+
