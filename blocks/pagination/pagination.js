@@ -9,7 +9,6 @@ function initPagination(element) {
   function renderItems() {
     const carousel = document.querySelectorAll('.blog-card');
     const startIndex = (currentPage - 1) * itemsPerPage;
-    // debugger;
     const endIndex = Math.min(startIndex + itemsPerPage, items.length);
 
     const itemsToShow = items.slice(startIndex, endIndex); // Get items for the current page
@@ -41,10 +40,10 @@ function initPagination(element) {
     pageNumbersContainer.innerHTML = '';
 
     // Always show the first page
-    if (currentPage > 4) {
-      createPageButton(1, pageNumbersContainer);
-      createEllipsis(pageNumbersContainer);
-    }
+      // if (currentPage > 4) {
+      //   createPageButton(1, pageNumbersContainer);
+      // createEllipsis(pageNumbersContainer);
+      // }
 
     // Show 3 siblings before and after the current page
     let number = 3
@@ -68,11 +67,6 @@ function initPagination(element) {
     element.querySelector('#prevBtn').disabled = currentPage === 1;
     element.querySelector('#nextBtn').disabled = currentPage === totalPages;
   }
-  function goToPage(page) {
-    currentPage = page;
-    renderPagination();
-    renderItems();
-  }
   function createPageButton(page, container) {
     const pageNumberBtn = document.createElement('button');
     pageNumberBtn.textContent = page;
@@ -80,6 +74,12 @@ function initPagination(element) {
     pageNumberBtn.addEventListener('click', () => goToPage(page));
     container.appendChild(pageNumberBtn);
   }
+  function goToPage(page) {
+    currentPage = page;
+    renderPagination();
+    renderItems();
+  }
+
   // Add event listeners for prev/next buttons
   element.querySelector('#prevBtn').addEventListener('click', () => {
     if (currentPage > 1) {
