@@ -580,6 +580,10 @@
           {
             "name": "Container Bg Color",
             "value": "container-bg-color"
+          },
+          {
+            "name": "Test Label",
+            "value": "test"
           }
         ]
       }
