@@ -1,4 +1,3 @@
-import { isDesktop } from '../header/header.js';
 
 /* eslint-disable */ 
 function initPagination(element) {
