@@ -79,4 +79,12 @@
     .section.flex-container.blog-wrapper.pagination-container {
         gap: 40px;
     }
+
+    .pagination .page-btn {
+        width: 40px;
+    }
+
+    .pagination > div {
+        gap: 0;
+    }
 }

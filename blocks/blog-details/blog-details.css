@@ -102,5 +102,6 @@
 
     .blog-details.blog-image picture img {
         height: 361px;
+        object-fit: cover;
     }
 }
