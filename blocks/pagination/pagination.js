@@ -1,3 +1,6 @@
+// import { isDesktop } from '../header/header.js';
+
+/* eslint-disable */ 
 function initPagination(element) {
   const items = Array.from(document.querySelectorAll('.blog-card')); // 50 items
   const itemsPerPage = 4; // Show 4 items per page
