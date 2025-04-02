@@ -81,10 +81,8 @@
     }
 
     .pagination .page-btn {
-        width: 40px;
+        width: 39px;
+        height: 32px;
     }
 
-    .pagination > div {
-        gap: 0;
-    }
 }
