@@ -35,5 +35,6 @@ export default async function decorate(block) {
   const path = url.pathname.split('/').slice(3).join('').replace('/', '');
   const items = list
     .filter((eachList) => (!eachList.path.endsWith(path) && eachList.tag?.includes(path)));
+  items.sort((ele1, ele2) => ele2.lastModified - ele1.lastModified);
   renderBlockList(block, items);
 }

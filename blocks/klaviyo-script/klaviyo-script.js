@@ -1,6 +1,10 @@
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
+  if (getMetadata('is-kalviyo-script') === 'false') {
+    block.textContent = '';
+    return block;
+  }
   const placeholders = await fetchPlaceholders();
   const [klaviyoClass] = block.children;
   const className = klaviyoClass.textContent.trim() || placeholders.klaviyoClassName.trim();
@@ -24,4 +28,6 @@ export default async function decorate(block) {
       // }
     }
   });
+
+  return block;
 }
