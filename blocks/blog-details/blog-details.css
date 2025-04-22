@@ -27,9 +27,9 @@
 
 .blog-details.blog-heading-primary h3 {
     font-size: var(--heading-font-size-xl);
-    font-family: var(--font-family-elza-semibold);
+    font-family: var(--font-family-elza-bold);
     line-height: 44px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--eds-black);
     margin: 0;
     padding-top: 32px;
@@ -63,9 +63,9 @@
 
 .blog-details.blog-heading-secondary h4 {
     font-size: var(--heading-font-size-l);
-    font-family: var(--font-family-elza-bold);
+    font-family: var(--font-family-elza-semibold);
     line-height: 36px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--eds-black);
     margin: 0;
     padding-top: 32px;
