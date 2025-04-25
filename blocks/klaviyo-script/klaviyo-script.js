@@ -1,4 +1,5 @@
 import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
+import { div, p } from '../../scripts/dom-helpers.js';
 
 export default async function decorate(block) {
   if (getMetadata('is-kalviyo-script') === 'false') {
@@ -6,11 +7,13 @@ export default async function decorate(block) {
     return block;
   }
   const placeholders = await fetchPlaceholders();
-  const [klaviyoClass] = block.children;
+  const [klaviyoClass, klaviyoTitle] = block.children;
   const className = klaviyoClass.textContent.trim() || placeholders.klaviyoClassName.trim();
+  const title = klaviyoTitle?.textContent?.trim() || placeholders.klaviyoTitle.trim();
   klaviyoClass.remove();
   if (className) {
     block.classList.add(className);
+    block.appendChild(div(div(p(title))));
   }
   // block.textContent = '';
   block.addEventListener('click', () => {
