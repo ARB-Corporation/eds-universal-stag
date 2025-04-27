@@ -49,7 +49,7 @@ export async function appendXF(block, xfPath) {
 
     if (window.isLast) {
       setTimeout(() => {
-        const event = new Event('DOMContentLoaded');
+        const event = new Event('CustomDOMContentLoaded');
         // Dispatch the event
         document.dispatchEvent(event);
       }, 1000);
