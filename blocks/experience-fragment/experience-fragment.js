@@ -1,5 +1,30 @@
 import { getFetchAPI } from '../../scripts/common.js';
 
+const checkIfLoaded = ({ script, link }) => {
+  if (script) {
+    const allScripts = document.querySelectorAll('script');
+    for (let i = 0; i < allScripts.length; i += 1) {
+      const scriptAlreadyExists = allScripts[i].src === script.src;
+      if (scriptAlreadyExists) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  if (link) {
+    const allLinks = document.querySelectorAll('link');
+    for (let i = 0; i < allLinks.length; i += 1) {
+      const linkAlreadyExists = allLinks[i].href === link.href;
+      if (linkAlreadyExists) {
+        return true;
+      }
+    }
+    return false;
+  }
+  return false;
+};
+
 export async function appendXF(block, xfPath) {
   const resp = await getFetchAPI(xfPath);
   if (resp.ok) {
@@ -22,7 +47,9 @@ export async function appendXF(block, xfPath) {
         const newLink = document.createElement('link');
         newLink.href = link.href.replace('http://localhost:3000', 'https://publish-p144166-e1487988.adobeaemcloud.com');
         newLink.rel = 'stylesheet';
-        document.head.append(newLink);
+        if (!checkIfLoaded({ link: newLink })) {
+          document.head.append(newLink);
+        }
       } catch (error) {
         console.error(error); // eslint-disable-line
       }
@@ -39,14 +66,14 @@ export async function appendXF(block, xfPath) {
           const newScript = document.createElement('script');
           newScript.src = link.src.replace('http://localhost:3000', 'https://publish-p144166-e1487988.adobeaemcloud.com');
           newScript.type = 'text/javascript';
-
-          document.body.append(newScript);
+          if (!checkIfLoaded({ script: newScript })) {
+            document.body.append(newScript);
+          }
         } catch (error) {
           console.error(error); // eslint-disable-line
         }
       }
     });
-
     if (window.isLast) {
       setTimeout(() => {
         const event = new Event('CustomDOMContentLoaded');
@@ -58,7 +85,6 @@ export async function appendXF(block, xfPath) {
   }
   return block;
 }
-
 export default async function decorate(block) {
   try {
     const xfPath = block.querySelector('a')?.href;

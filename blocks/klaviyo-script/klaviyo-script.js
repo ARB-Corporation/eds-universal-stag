@@ -13,7 +13,7 @@ export default async function decorate(block) {
   klaviyoClass.remove();
   if (className) {
     block.classList.add(className);
-    if (getMetadata('kalviyo-title') === 'true') block.appendChild(div(div(p(title))));
+    if (getMetadata('kalviyo-title') === 'true' && (klaviyoTitle?.textContent?.trim() === '' || !klaviyoTitle)) block.appendChild(div(div(p(title))));
   }
   // block.textContent = '';
   block.addEventListener('click', () => {
