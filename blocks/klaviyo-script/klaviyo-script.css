@@ -2,17 +2,18 @@
     background-color: red;
 }
 
-.klaviyo-script > div:nth-child(1) div {
+.klaviyo-script > div:not(.empty) > div {
     border: 1px solid #304F6C1A;
     border-bottom: none;
     padding-top: 32px;
+    background-color: #fff;
 }
 
 .klaviyo-script{
     padding-bottom: 24px !important;
 }
 
-.klaviyo-script div:nth-child(1) div p{
+.klaviyo-script div:not(.empty) div p{
     padding-inline: 10px;
     font-family: var(--font-family-elza-semibold);
     font-weight: 600;
@@ -29,20 +30,20 @@
 }
 
 @media screen and (width <=768px) {
-    .klaviyo-script div:nth-child(1) div p{
+    .klaviyo-script div:not(.empty) div p{
        font-size: 18px;
        position: relative;
        margin: 0;
     }
 
-    .klaviyo-script div:nth-child(1) div p::after{
+    .klaviyo-script div:not(.empty) div p::after{
         content: url("/icons/expand_more.svg");
         position: absolute;
         right: 20px;
         top: -4px;
     }
 
-    .klaviyo-script.open div:nth-child(1) div p::after{
+    .klaviyo-script.open div:not(.empty) div p::after{
         top: -12px;
         transform: rotate(180deg);
     }
@@ -51,7 +52,7 @@
         border: 1px solid #304F6C1A;
     }
 
-    .closed > div:nth-child(1) div{
+    .closed > div:not(.empty) div{
         border: none;
         padding-top: 34px;
     }
@@ -76,4 +77,3 @@
         display: flex !important;
     }
 }
-
