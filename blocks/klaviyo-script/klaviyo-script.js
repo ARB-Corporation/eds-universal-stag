@@ -31,6 +31,9 @@ export default async function decorate(block) {
       // }
     }
   });
-
+  const divInsideBlock = block.querySelector('div');
+  if (divInsideBlock && divInsideBlock.textContent.trim() === '') {
+    divInsideBlock.classList.add('empty');
+  }
   return block;
 }
