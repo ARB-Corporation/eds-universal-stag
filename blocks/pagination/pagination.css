@@ -56,7 +56,7 @@
 }
 
 .pagination .page-btn.active {
-    background-color: var(--lavendar-wisp);
+    background-color: var(--eds-lavendar-wisp);
     color: var(--eds-black);
     border: 1px solid #304F6C1A;
 }
@@ -79,4 +79,10 @@
     .section.flex-container.blog-wrapper.pagination-container {
         gap: 40px;
     }
+
+    .pagination .page-btn {
+        width: 40px;
+        height: 32px;
+    }
+
 }

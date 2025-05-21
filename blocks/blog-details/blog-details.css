@@ -37,7 +37,7 @@
 
 .blog-details.blog-description p,
 .blog-details.blog-description p strong {
-    font-size: var(--body-font-size-s);
+    font-size: var(--body-font-size-xs);
     font-family: var(--font-family-elza-regular);
     line-height: 28px;
     font-weight: 400;
@@ -63,9 +63,9 @@
 
 .blog-details.blog-heading-secondary h4 {
     font-size: var(--heading-font-size-l);
-    font-family: var(--font-family-elza-bold);
+    font-family: var(--font-family-elza-semibold);
     line-height: 36px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--eds-black);
     margin: 0;
     padding-top: 32px;
@@ -102,5 +102,6 @@
 
     .blog-details.blog-image picture img {
         height: 361px;
+        object-fit: cover;
     }
 }
