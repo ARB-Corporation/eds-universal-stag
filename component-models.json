@@ -3,23 +3,48 @@
     "id": "page-metadata",
     "fields": [
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "jcr:title",
-        "label": "Title"
+        "component": "reference",
+        "name": "page-img",
+        "label": "Page Image"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "jcr:description",
-        "label": "Description"
+        "name": "description",
+        "label": "Page Description"
+      },
+      {
+        "component": "boolean",
+        "name": "breadcrumbs",
+        "label": "Breadcrumb"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "keywords",
-        "multi": true,
-        "label": "Keywords"
+        "name": "breadcrumbs_title",
+        "label": "Breadcrumb Title"
+      },
+      {
+        "component": "multiselect",
+        "name": "robots",
+        "value": "",
+        "label": "Robots Tags",
+        "options": [
+          {
+            "name": "index",
+            "value": "index"
+          },
+          {
+            "name": "noindex",
+            "value": "noindex"
+          },
+          {
+            "name": "follow",
+            "value": "follow"
+          },
+          {
+            "name": "nofollow",
+            "value": "nofollow"
+          }
+        ]
       }
     ]
   },
@@ -123,19 +148,117 @@
     "id": "section",
     "fields": [
       {
-        "component": "text",
-        "name": "name",
-        "label": "Section Name",
-        "description": "The label shown for this section in the Content Tree"
-      },
-      {
         "component": "multiselect",
         "name": "style",
-        "label": "Style",
+        "label": "Section Style",
         "options": [
           {
-            "name": "Highlight",
-            "value": "highlight"
+            "name": "Element style",
+            "children": [
+              {
+                "name": "Container",
+                "value": "container"
+              }
+            ]
+          },
+          {
+            "name": "Content style",
+            "children": [
+              {
+                "name": "Text Color",
+                "value": "text-color"
+              },
+              {
+                "name": "Flex Container",
+                "value": "arb-eds-flex-container"
+              },
+              {
+                "name": "Blog Wrapper",
+                "value": "blog_wrapper"
+              },
+              {
+                "name": "Width-40",
+                "value": "width-40"
+              },
+              {
+                "name": "Width-60",
+                "value": "width-60"
+              }
+            ]
+          },
+          {
+            "name": "Background Color",
+            "children": [
+              {
+                "name": "Light Blue",
+                "value": "bg-light-blue"
+              },
+              {
+                "name": "Yellow",
+                "value": "bg-yellow"
+              }
+            ]
+          },
+          {
+            "name": "Margin",
+            "children": [
+              {
+                "name": "mt-10",
+                "value": "mt-10"
+              },
+              {
+                "name": "mt-20",
+                "value": "mt-20"
+              },
+              {
+                "name": "mt-30",
+                "value": "mt-30"
+              },
+              {
+                "name": "mt-40",
+                "value": "mt-40"
+              },
+              {
+                "name": "mt-50",
+                "value": "mt-50"
+              },
+              {
+                "name": "mb-10",
+                "value": "mb-10"
+              },
+              {
+                "name": "mb-20",
+                "value": "mb-20"
+              },
+              {
+                "name": "mb-25",
+                "value": "mb-25"
+              },
+              {
+                "name": "mb-30",
+                "value": "mb-30"
+              },
+              {
+                "name": "mb-40",
+                "value": "mb-40"
+              },
+              {
+                "name": "mb-50",
+                "value": "mb-50"
+              },
+              {
+                "name": "mb-60",
+                "value": "mb-60"
+              },
+              {
+                "name": "mb-70",
+                "value": "mb-70"
+              },
+              {
+                "name": "mb-80",
+                "value": "mb-80"
+              }
+            ]
           }
         ]
       }
@@ -193,6 +316,26 @@
     "id": "hero",
     "fields": [
       {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Hero Style",
+        "options": [
+          {
+            "name": "Hero Image",
+            "value": "hero_img"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
@@ -203,8 +346,110 @@
         "component": "text",
         "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt",
+        "label": "Image Alt",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "categories",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Categories Style",
+        "options": [
+          {
+            "name": "Categories Container",
+            "value": "categories__container"
+          },
+          {
+            "name": "Categories Title",
+            "value": "categories__title"
+          },
+          {
+            "name": "Categories List",
+            "value": "categories__list"
+          }
+        ]
+      },
+      {
+        "component" : "richtext",
+        "name" : "content",
+        "label" : "Heading"
+      }
+    ]
+  },
+  {
+    "id": "tags",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Tags Style",
+        "options": [
+          {
+            "name": "Tags Bg Color",
+            "value": "tags-bg-color"
+          },
+          {
+            "name": "Tags Container",
+            "value": "tags__container"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tag-list",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Tag-list Style",
+        "options": [
+          {
+            "name": "Tag-list Container",
+            "value": "taglist__container"
+          },
+          {
+            "name": "Tag-list Title",
+            "value": "taglist__title"
+          },
+          {
+            "name": "Tag-list Tags",
+            "value": "taglist__tags"
+          }
+        ]
+      },
+      {
+        "component" : "richtext",
+        "name" : "content",
+        "label" : "Heading"
+      }
+    ]
+  },
+  {
+    "id": "blog-list",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Blog Details Style",
+        "options": [
+          {
+            "name": "Blog LIst Wrapper",
+            "value": "blog-list-wrapper"
+          }
+        ]
       },
       {
         "component": "richtext",
@@ -212,6 +457,184 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "blog-details",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Blog Details Style",
+        "options": [
+          {
+            "name": "Blog Title",
+            "value": "blog_title"
+          },
+          {
+            "name": "Blog Time",
+            "value": "blog_time"
+          },
+          {
+            "name": "Blog Heading Primary",
+            "value": "blog_heading-primary"
+          },
+          {
+            "name": "Blog Heading Secondary",
+            "value": "blog_heading-secondary"
+          },
+          {
+            "name": "Blog Description",
+            "value": "blog_description"
+          },
+          {
+            "name": "Blog Image",
+            "value": "blog_image"
+          },
+          {
+            "name": "Blog Links",
+            "value": "blog_links"
+          },
+          {
+            "name": "Border Top",
+            "value": "border-top"
+          },
+          {
+            "name": "Border Bottom",
+            "value": "border-bottom"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Profile Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Profile Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text1",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "experience-fragment",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Experience Fragment Style",
+        "options": [
+          {
+            "name": "Header Container",
+            "value": "header-container"
+          },
+          {
+            "name": "Footer Container",
+            "value": "footer-container"
+          }
+        ]
+      },
+      {
+        "component": "aem-experience-fragment",
+        "name": "picker",
+        "label": "Experience Fragment Picker",
+        "valueType": "string",
+        "variationName": "experienceFragmentVariation"
+      }
+    ]
+  },
+  {
+    "id": "container",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Container Style",
+        "options": [
+          {
+            "name": "Container Bg Color",
+            "value": "container-bg-color"
+          },
+          {
+            "name": "Test Label",
+            "value": "test"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pagination",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Pagination Style",
+        "options": [
+          {
+            "name": "Pagination Container",
+            "value": "pagination-container"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "klaviyo-script",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Klaviyo Style",
+        "options": [
+          {
+            "name": "Klaviyo Container",
+            "value": "klaviyo-container"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "class-name",
+        "value": "",
+        "label": "Klaviyo Class"
+      },
+      {
+        "component": "richtext",
+        "name": "rte",
+        "value": "",
+        "label": "Klaviyo Content"
       }
     ]
   }

@@ -1,0 +1,107 @@
+.blog-details.blog-title h1 {
+    font-size: var(--heading-font-size-xxl);
+    font-family: var(--font-family-elza-bold);
+    line-height: 72px;
+    font-weight: 700;
+    color: var(--eds-black);
+    margin: 0;
+}
+
+@media screen and (width <= 768px){
+    .blog-details.blog-title h1 {
+        font-size: 40px;
+        line-height: 44px;
+    } 
+}
+
+.blog-details.blog-time p{
+    font-size: var(--body-font-size-xs);
+    font-family: var(--font-family-elza-regular);
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--eds-light-grey);
+    padding-top: 12px;
+    margin: 0;
+    padding-bottom: 32px;
+}
+
+.blog-details.blog-heading-primary h3 {
+    font-size: var(--heading-font-size-xl);
+    font-family: var(--font-family-elza-bold);
+    line-height: 44px;
+    font-weight: 700;
+    color: var(--eds-black);
+    margin: 0;
+    padding-top: 32px;
+}
+
+.blog-details.blog-description p,
+.blog-details.blog-description p strong {
+    font-size: var(--body-font-size-xs);
+    font-family: var(--font-family-elza-regular);
+    line-height: 28px;
+    font-weight: 400;
+    color: var(--eds-dark-grey);
+    margin: 0;
+    padding-top: 32px;
+}
+
+.blog-details.blog-description p strong {
+    display: flex;
+
+    /* align-items: center; */
+    padding: 0 0 24px;
+}
+
+.blog-details.blog-description p em {
+    font-style: normal;
+}
+
+.blog-details.blog-description p:has(em) {
+    padding-bottom: 32px;
+}
+
+.blog-details.blog-heading-secondary h4 {
+    font-size: var(--heading-font-size-l);
+    font-family: var(--font-family-elza-semibold);
+    line-height: 36px;
+    font-weight: 600;
+    color: var(--eds-black);
+    margin: 0;
+    padding-top: 32px;
+} 
+
+.blog-details.blog-heading-secondary h4 em{
+    font-style: normal;
+}
+
+.blog-details.blog-heading-secondary h4:has(em) {
+    padding-top: 56px;
+}
+
+.blog-details.blog-links p a {
+    text-decoration: underline;
+    color: var(--eds-dark-grey);
+    font-family: var(--font-family-elza-medium);
+    font-weight: 500;
+}
+
+.blog-details.blog-image picture img {
+    padding-top: 32px;
+    height: 449px;
+}
+
+@media screen and (width <= 768px) {
+    .section.width-60 > div:first-child {
+        width: 100%;
+    }
+      
+    .section.width-40 > div:nth-child(2) {
+        width: 100%;
+    }
+
+    .blog-details.blog-image picture img {
+        height: 361px;
+        object-fit: cover;
+    }
+}
