@@ -1,0 +1,88 @@
+.section.pagination-container {
+    position: relative;
+    padding-bottom: 100px;
+}
+
+.pagination.block {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    width: 100%; 
+    bottom: 1%;
+}
+
+.pagination.block .pagination {
+    flex-direction: row;
+}
+
+.pagination .page-btn {
+    padding: 5px 10px;
+    border: none;
+    background-color: var(--eds-white);
+    color: var(--eds-black);
+    cursor: pointer;
+    border-radius: 4px;
+    height: 48px;
+    width: 48px;
+    font-size: var(--body-font-size-xs);
+    font-family: var(--font-family-elza-regular);
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.pagination .page-btn img {
+    filter: invert(1) grayscale(1) contrast(100%) brightness(0) saturate(0);
+}
+
+.pagination .page-btn.prev-btn img{
+    rotate: 180deg;
+}
+
+.pagination .page-btn.disabled {
+    background-color: var(--eds-white);
+    cursor: not-allowed;
+}
+
+.pagination .page-btn:disabled img {
+    filter: invert(1) grayscale(1) contrast(80%) brightness(90%) saturate(0.6);
+}
+
+.pagination > div {
+    display: flex;
+    gap: 4px;
+}
+
+.pagination .page-btn.active {
+    background-color: var(--eds-lavendar-wisp);
+    color: var(--eds-black);
+    border: 1px solid #304F6C1A;
+}
+
+.pagination .ellipsis {
+    padding: 5px 10px;
+    color: var(--eds-davy-grey);
+}
+
+@media screen and (width <= 768px) {
+    .section.pagination-container {
+        padding-bottom: 0;
+    }
+
+    .pagination.block {
+        position: unset;
+        padding-top: 40px;
+    }
+
+    .section.flex-container.blog-wrapper.pagination-container {
+        gap: 40px;
+    }
+
+    .pagination .page-btn {
+        width: 40px;
+        height: 32px;
+    }
+
+}

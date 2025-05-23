@@ -1,0 +1,80 @@
+@import url('../accordion/accordion.css');
+
+.taglist.taglist-container {
+  border-radius: 3px;
+  border: 1px solid #304F6C1A;
+  padding: 32px 24px;
+  background-color: var(--eds-white);
+  margin-bottom: 24px;
+}
+
+.taglist.taglist-title summary::marker {
+  content: none;
+}
+
+.taglist.taglist-title h5 {
+  font-size: var(--heading-font-size-m);
+  font-family: var(--font-family-elza-semibold);
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--eds-black);
+  margin: 0;
+  padding-bottom: 24px;
+}
+
+.taglist.taglist-tags ul {
+  list-style: none;
+  padding: 24px 0 0;
+  margin: 0;
+  border-top: 1px solid #304F6C1A;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.taglist.taglist-tags ul li {
+  background-color: var(--eds-grey);
+  font-size: var(--body-font-size-xxs);
+  font-family: var(--font-family-elza-regular);
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--eds-black);
+  padding: 4px 16px;
+  border-radius: 8px;
+}
+
+.taglist.taglist-tags ul li.active {
+  background-color: darkgray;
+}
+
+
+@media screen and (width <=768px) {
+  .taglist.taglist-title h5 {
+    font-size: var(--heading-font-size-xs);
+    line-height: 20px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .taglist.taglist-title h5::after {
+    content: url('/icons/expand_more.svg');
+    display: inline-block;
+    height: 10px;
+    width: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .taglist.taglist-title .accordion-item[open] h5::after{
+    transform: rotate(180deg);
+    top: 10px;
+    right: -5px;
+}
+
+  .taglist.taglist-tags ul {
+    border-top: none;
+  }
+}
