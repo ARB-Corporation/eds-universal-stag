@@ -61,7 +61,7 @@ async function buildBreadcrumbsFromNavTree() {
   const currentUrl = new URL(window.location.href);
   const currentPath = currentUrl.pathname;
   const queryList = await getQueryList();
-  const breadcrumbsList = queryList.filter((eachlist) => currentPath.includes(eachlist.path));
+  const breadcrumbsList = queryList.filter((eachlist) => eachlist.breadcrumbshide !== 'true' && currentPath.includes(eachlist.path));
   const placeholders = await fetchPlaceholders();
   const homePlaceholder = placeholders.breadcrumbsHomeLabel || 'Home';
   breadcrumbsList.sort((a, b) => a.path.split('/').length - b.path.split('/').length).forEach((link) => {

@@ -20,6 +20,9 @@ indices:
       breadcrumbstitle:
         select: head > meta[name="breadcrumbs_title"]
         value: attribute(el, "content")
+      breadcrumbshide:
+        select: head > meta[name="breadcrumbs_hide"]
+        value: attribute(el, "content")
       tag:
         select: head > meta[name="cq-tags"]
         value: attribute(el, "content")
