@@ -1,4 +1,6 @@
+import { getMetadata } from '../../scripts/aem.js';
 import { getFetchAPI } from '../../scripts/common.js';
+const xfDomain = getMetadata('xf-domain') ? new URL(getMetadata('xf-domain'))?.origin : window.location.origin;
 
 const checkIfLoaded = ({ script, link }) => {
   if (script) {
@@ -33,11 +35,11 @@ export async function appendXF(block, xfPath) {
     if (location.href.includes('localhost') || location.href.includes('.aem.live')) {
       str = str.replaceAll(
         '/etc.clientlibs/',
-        'https://publish-p144166-e1487988.adobeaemcloud.com/etc.clientlibs/',
+        xfDomain +'/etc.clientlibs/',
       );
       str = str.replaceAll(
         '/content/',
-        'https://publish-p144166-e1487988.adobeaemcloud.com/content/',
+        xfDomain +'/content/',
       );
     }
     const div = document.createElement('div');
@@ -45,7 +47,7 @@ export async function appendXF(block, xfPath) {
     div.querySelectorAll('link').forEach((link) => {
       try {
         const newLink = document.createElement('link');
-        newLink.href = link.href.replace('http://localhost:3000', 'https://publish-p144166-e1487988.adobeaemcloud.com');
+        newLink.href = link.href.replace('http://localhost:3000', xfDomain);
         newLink.rel = 'stylesheet';
         if (!checkIfLoaded({ link: newLink })) {
           document.head.append(newLink);
@@ -64,7 +66,7 @@ export async function appendXF(block, xfPath) {
       if (!exculdeLink.filter((clientLib) => link.src.includes(clientLib)).length) {
         try {
           const newScript = document.createElement('script');
-          newScript.src = link.src.replace('http://localhost:3000', 'https://publish-p144166-e1487988.adobeaemcloud.com');
+          newScript.src = link.src.replace('http://localhost:3000', xfDomain +'');
           newScript.type = 'text/javascript';
           if (!checkIfLoaded({ script: newScript })) {
             document.body.append(newScript);
@@ -74,7 +76,7 @@ export async function appendXF(block, xfPath) {
         }
       }
     });
-    if (window.isLast) {
+    if (window.isLast) {  
       setTimeout(() => {
         const event = new Event('CustomDOMContentLoaded');
         // Dispatch the event
