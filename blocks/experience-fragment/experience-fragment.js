@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { getFetchAPI } from '../../scripts/common.js';
+
 const xfDomain = getMetadata('xf-domain') ? new URL(getMetadata('xf-domain'))?.origin : window.location.origin;
 
 const checkIfLoaded = ({ script, link }) => {
@@ -35,11 +36,11 @@ export async function appendXF(block, xfPath) {
     if (location.href.includes('localhost') || location.href.includes('.aem.live')) {
       str = str.replaceAll(
         '/etc.clientlibs/',
-        xfDomain +'/etc.clientlibs/',
+        `${xfDomain}/etc.clientlibs/`,
       );
       str = str.replaceAll(
         '/content/',
-        xfDomain +'/content/',
+        `${xfDomain}/content/`,
       );
     }
     const div = document.createElement('div');
@@ -66,7 +67,7 @@ export async function appendXF(block, xfPath) {
       if (!exculdeLink.filter((clientLib) => link.src.includes(clientLib)).length) {
         try {
           const newScript = document.createElement('script');
-          newScript.src = link.src.replace('http://localhost:3000', xfDomain +'');
+          newScript.src = link.src.replace('http://localhost:3000', `${xfDomain}`);
           newScript.type = 'text/javascript';
           if (!checkIfLoaded({ script: newScript })) {
             document.body.append(newScript);
@@ -76,7 +77,7 @@ export async function appendXF(block, xfPath) {
         }
       }
     });
-    if (window.isLast) {  
+    if (window.isLast) {
       setTimeout(() => {
         const event = new Event('CustomDOMContentLoaded');
         // Dispatch the event
