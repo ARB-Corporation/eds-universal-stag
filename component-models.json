@@ -23,7 +23,7 @@
         "label": "Breadcrumb Title"
       },
       {
-        "component": "checkbox",
+        "component": "boolean",
         "name": "breadcrumbs_hide",
         "label": "Hide On Breadcrumbs"
       },
