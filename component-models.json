@@ -23,6 +23,11 @@
         "label": "Breadcrumb Title"
       },
       {
+        "component": "checkbox",
+        "name": "breadcrumbs_hide",
+        "label": "Hide On Breadcrumbs"
+      },
+      {
         "component": "multiselect",
         "name": "robots",
         "value": "",
