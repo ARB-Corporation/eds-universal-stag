@@ -73,7 +73,13 @@
 
     .pagination.block {
         position: unset;
-        padding-top: 40px;
+        padding: 0;
+        margin-top: 40px;
+    }
+
+    .pagination.block .pagination {
+        padding: 0;
+        margin-top: 0;
     }
 
     .section.flex-container.blog-wrapper.pagination-container {
