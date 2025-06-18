@@ -71,20 +71,34 @@ export async function getList() {
 async function buildBreadcrumbsFromNavTree() {
   const crumbs = [];
 
-  // const homeUrl = document.querySelector('.nav-brand a[href]').href;
   const currentUrl = new URL(window.location.href);
   const currentPath = currentUrl.pathname;
   const queryList = await getQueryList();
-  const breadcrumbsList = queryList.filter((eachlist) => currentPath.includes(eachlist.path));
   const placeholders = await fetchPlaceholders();
   const homePlaceholder = placeholders.breadcrumbsHomeLabel || 'Home';
-  breadcrumbsList.sort((a, b) => a.path.split('/').length - b.path.split('/').length).forEach((link) => {
-    if (link.path === '/') {
-      crumbs.push({ title: homePlaceholder, url: link.path });
-    } else {
-      crumbs.push({ title: link.breadcrumbstitle, url: link.path });
+
+  // Only include true parent paths in the breadcrumb trail
+  const breadcrumbsList = queryList.filter((eachlist) => {
+    if (eachlist.breadcrumbshide === 'true') return false;
+    if (eachlist.path === '/') return true;
+    if (currentPath === eachlist.path) return true;
+    if (currentPath.startsWith(eachlist.path)) {
+      // Ensure next char is / or end of string
+      const nextChar = currentPath.charAt(eachlist.path.length);
+      return nextChar === '/' || nextChar === '';
     }
+    return false;
   });
+
+  breadcrumbsList
+    .sort((a, b) => a.path.split('/').length - b.path.split('/').length)
+    .forEach((link) => {
+      if (link.path === '/') {
+        crumbs.push({ title: homePlaceholder, url: link.path });
+      } else {
+        crumbs.push({ title: link.breadcrumbstitle, url: link.path });
+      }
+    });
 
   return crumbs;
 }

@@ -11,7 +11,7 @@ export async function renderBlockList(block, items) {
       const imgSrc = (window.location.href.includes('localhost') || window.location.href.includes('.aem.live')) ? eachData.image.replace('/content/dam/arb/arb-blogs/', '/images/') : eachData.image;
       return div(
         { class: 'blog-card' },
-        div({ class: 'blog-card-img' }, img({ src: imgSrc, alt: 'blog-list-img' })),
+        div({ class: `blog-card-img ${!imgSrc ? 'default-image' : ''}` }, img({ src: imgSrc || '/content/dam/arb/permanent-site-assets/arb/logos/Fallback-logo.svg', alt: 'blog-list-img' })),
         div(
           { class: 'blog-card-content' },
           div(
