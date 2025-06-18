@@ -86,10 +86,20 @@
     width: 296px;
 }
 
+.blog-list.blog-list-wrapper .blog-card-img.default-image {
+    border: 1px solid #304f6c1a;
+    box-sizing: border-box;
+    padding-inline: 36px;
+}
+
 .blog-list.blog-list-wrapper .blog-card-img img {
     max-width: unset;
     height: 296px;
     width: inherit;
+}
+
+.blog-list.blog-list-wrapper .blog-card-img.default-image img {
+    width: 100%;
 }
 
 @media screen and (width <= 768px) {
