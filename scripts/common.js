@@ -55,7 +55,6 @@ export async function getList() {
     });
   });
   list.forEach((item) => {
-    debugger;
     if (parentToLeaves[item.category]) {
       item.leaves = parentToLeaves[item.category].length;
     } else {
