@@ -61,8 +61,6 @@ export async function getList() {
       item.leaves = 0;
     }
   });
-  console.log('parentToLeaves', parentToLeaves);
-  console.log('list', list);
   proxy.list = list;
   return proxy.list;
 }
