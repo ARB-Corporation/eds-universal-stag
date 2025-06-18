@@ -3,6 +3,8 @@ coverage/*
 logs/*
 node_modules/*
 
+fstab.yaml
+.github/pull_request_template.md
 helix-importer-ui
 .DS_Store
 *.bak

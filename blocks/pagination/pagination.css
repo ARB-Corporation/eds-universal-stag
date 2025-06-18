@@ -11,11 +11,15 @@
     gap: 5px;
     position: absolute;
     width: 100%; 
-    bottom: 1%;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .pagination.block .pagination {
     flex-direction: row;
+    margin: 0;
+    padding: 0;
 }
 
 .pagination .page-btn {
@@ -63,6 +67,10 @@
 
 .pagination .ellipsis {
     padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     color: var(--eds-davy-grey);
 }
 
