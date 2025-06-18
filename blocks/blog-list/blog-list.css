@@ -100,6 +100,7 @@
 
 .blog-list.blog-list-wrapper .blog-card-img.default-image img {
     width: 100%;
+    aspect-ratio: 1;
 }
 
 @media screen and (width <= 768px) {
