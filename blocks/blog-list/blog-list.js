@@ -36,15 +36,14 @@ export default async function decorate(block) {
   const items = list.filter((eachList) => {
     const segments = eachList.path.split('/').filter(Boolean); // remove empty strings from slashes
     const thirdSegment = segments[2]; // index 2 gives the third section
-  
+
     return (
-      !eachList.path.endsWith(path) &&
-      thirdSegment === path &&
-      eachList.tag?.includes(path)
+      !eachList.path.endsWith(path)
+      && thirdSegment === path
+      && eachList.tag?.includes(path)
     );
   });
-  
+
   items.sort((ele1, ele2) => ele2.lastModified - ele1.lastModified);
   renderBlockList(block, items);
 }
-
