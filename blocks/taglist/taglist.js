@@ -41,7 +41,6 @@ export default async function decorate(block) {
               this.classList.add('active');
               listByTagName = await getListByTagName(this.dataset.tagName);
             }
-          
             renderBlockList(blogListBlock, listByTagName);
             pagination(document.querySelector('.pagination'));
           }
