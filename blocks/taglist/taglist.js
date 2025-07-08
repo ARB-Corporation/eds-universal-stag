@@ -28,9 +28,20 @@ export default async function decorate(block) {
         async onClick() {
           const blogListBlock = document.querySelector('.blog-list');
           if (blogListBlock) {
+            const isActive = this.classList.contains('active');
+            // Remove all active classes
             allTag.forEach((tag) => tag.querySelector('li').classList.remove('active'));
-            this.classList.add('active');
-            const listByTagName = await getListByTagName(this.dataset.tagName);
+            let listByTagName;
+            if (isActive) {
+              // If already active, reload default list (or empty list based on your logic)
+              listByTagName = await getListByTagName(''); // Or pass null/undefined if needed
+              listByTagName.sort((ele1, ele2) => ele2.lastModified - ele1.lastModified);
+            } else {
+              // Set clicked tag active and get its data
+              this.classList.add('active');
+              listByTagName = await getListByTagName(this.dataset.tagName);
+            }
+          
             renderBlockList(blogListBlock, listByTagName);
             pagination(document.querySelector('.pagination'));
           }
