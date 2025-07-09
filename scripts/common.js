@@ -25,8 +25,15 @@ export async function getList() {
   }
   const data = await getQueryList();
   const list = [];
+  const parentToLeaves = {};
   data.forEach((eachData, index) => {
     const { path } = eachData;
+    const parentPath = path.split('/').slice(3, -1).join('/');
+    if (!parentToLeaves[parentPath]) {
+      parentToLeaves[parentPath] = [];
+    }
+    parentToLeaves[parentPath].push(path);
+
     const rawTags = eachData.tag ? eachData.tag.trim().split(',') : [];
     rawTags.forEach((eachRawTag) => {
       const category = eachRawTag.split('/')[0].split(':')[1];
@@ -45,11 +52,15 @@ export async function getList() {
       } else {
         list.push(categoryObj);
       }
-      // if (list[category]) list[category].push(tag);
-      // else list[category] = [tag];
     });
   });
-  // console.log(list);
+  list.forEach((item) => {
+    if (parentToLeaves[item.category]) {
+      item.leaves = parentToLeaves[item.category].length;
+    } else {
+      item.leaves = 0;
+    }
+  });
   proxy.list = list;
   return proxy.list;
 }

@@ -16,7 +16,10 @@ export default async function decorate(block) {
     div(
       ul(
 
-        ...list.filter((el) => !window.location.href.includes(el.category)).map((eachData) => li(a({ href: `${eachData.path}` }, capitalizeEveryWord((`${eachData.category}`))), span(`${eachData.count}`))),
+        ...list.filter((el) => !window.location.href.includes(el.category)).map((eachData) => li(
+          a({ href: `${eachData.path}` }, capitalizeEveryWord((`${eachData.category}`))),
+          span(Array.isArray(eachData.leaves) ? JSON.stringify(eachData.leaves) : eachData.leaves),
+        )),
       ),
     ),
   );

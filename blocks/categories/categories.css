@@ -25,8 +25,6 @@
     padding: 24px 10px 0 0;
     margin: 0;
     border-top: 1px solid #304F6C1A;
-    height: 145px;
-    overflow-y: scroll;
 }
 
 .categories.categories-list ul::-webkit-scrollbar{
@@ -92,5 +90,7 @@
 
     .categories.categories-list ul {
         border-top: none;
+        height: 145px;
+        overflow-y: scroll;
     }
 }
