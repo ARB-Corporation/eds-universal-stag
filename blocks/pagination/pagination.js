@@ -103,6 +103,14 @@ function initPagination(element) {
 }
 
 export default function decorate(block) {
+  const items = Array.from(document.querySelectorAll('.blog-card')); 
+  if (items.length < 4) {
+    block.innerHTML = `
+    <div class="pagination">
+    </div>
+  `;
+    return
+  }
   block.innerHTML = `
     <div class="pagination">
         <button class="page-btn prev-btn" id="prevBtn"><img src="../../icons/pagi-next-arrow.svg" alt="pagi-next-arrow" width="24" height="24"/></button>
