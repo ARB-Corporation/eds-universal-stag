@@ -16,9 +16,21 @@ export default async function decorate(block) {
     if (getMetadata('kalviyo-title') === 'true' && (klaviyoTitle?.textContent?.trim() === '' || !klaviyoTitle)) block.appendChild(div(div(p(title))));
   }
   // block.textContent = '';
-  block.addEventListener('click', () => {
+  block.addEventListener('click', (event) => {
     if (window.innerWidth <= 768) { // will only get in mobile view
       // if (this.classList.contains('.klaviyo-form-VTMbFv')) {
+      const clickedId = event.target.id;
+      const isButton = block.querySelector('button') === event.target;
+
+      // Skip toggle if user clicks on inputs or button inside block
+      if (
+        clickedId === 'first_name_01JDTQRV0HNJ5DXHYY51XZAC50'
+      || clickedId === 'last_name_01JDTQRV0HNJ5DXHYY51XZAC50'
+      || clickedId === 'email_01JDTQRV0RGZ06H3H2MW0ZQZ1A'
+      || isButton
+      ) {
+        return;
+      }
       if (block.querySelector('.kl-private-reset-css-Xuajs1').classList.contains('dsp-block')) {
         block.classList.add('closed');
         block.classList.remove('open');
