@@ -11,7 +11,7 @@ export async function renderBlockList(block, items) {
       const imgSrc = (window.location.href.includes('localhost') || window.location.href.includes('.aem.live')) ? eachData.image.replace('/content/dam/arb/arb-blogs/', '/images/') : eachData.image;
       return div(
         { class: 'blog-card' },
-        div({ class: 'blog-card-img' }, img({ src: imgSrc, alt: 'blog-list-img' })),
+        div({ class: `blog-card-img ${!imgSrc ? 'default-image' : ''}` }, img({ src: imgSrc || '/content/dam/arb/permanent-site-assets/arb/logos/Fallback-logo.svg', alt: 'blog-list-img' })),
         div(
           { class: 'blog-card-content' },
           div(
@@ -33,8 +33,17 @@ export default async function decorate(block) {
   const list = await getQueryList();
   const url = new URL(window.location.href);
   const path = url.pathname.split('/').slice(3).join('').replace('/', '');
-  const items = list
-    .filter((eachList) => (!eachList.path.endsWith(path) && eachList.tag?.includes(path)));
+  const items = list.filter((eachList) => {
+    const segments = eachList.path.split('/').filter(Boolean); // remove empty strings from slashes
+    const thirdSegment = segments[2]; // index 2 gives the third section
+
+    return (
+      !eachList.path.endsWith(path)
+      && thirdSegment === path
+      && eachList.tag?.includes(path)
+    );
+  });
+
   items.sort((ele1, ele2) => ele2.lastModified - ele1.lastModified);
   renderBlockList(block, items);
 }
