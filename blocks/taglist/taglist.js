@@ -28,21 +28,46 @@ export default async function decorate(block) {
         async onClick() {
           const blogListBlock = document.querySelector('.blog-list');
           if (blogListBlock) {
-            const isActive = this.classList.contains('active');
-            // Remove all active classes
-            allTag.forEach((tag) => tag.querySelector('li').classList.remove('active'));
+            // Toggle the active state of the clicked tag
+            this.classList.toggle('active');
+
+            // Get all currently active tags
+            const activeTags = Array.from(document.querySelectorAll('li.active'))
+              .map((tag) => tag.dataset.tagName);
+
             let listByTagName;
-            if (isActive) {
-              // If already active, reload default list (or empty list based on your logic)
-              listByTagName = await getListByTagName(''); // Or pass null/undefined if needed
-              listByTagName.sort((ele1, ele2) => ele2.lastModified - ele1.lastModified);
+
+            if (activeTags.length === 0) {
+              // No tags selected – show default list (e.g. all or none)
+              listByTagName = await getListByTagName('');
             } else {
-              // Set clicked tag active and get its data
-              this.classList.add('active');
-              listByTagName = await getListByTagName(this.dataset.tagName);
+              // Fetch blog lists for all selected tags
+              const allTagLists = await Promise.all(
+                activeTags.map((tag) => getListByTagName(tag)),
+              );
+
+              // Merge and remove duplicates (assuming each item has unique id or slug)
+              const seen = new Set();
+              listByTagName = allTagLists
+                .flat()
+                .filter((item) => {
+                  const uniqueKey = item.id || item.slug || JSON.stringify(item);
+                  if (seen.has(uniqueKey)) return false;
+                  seen.add(uniqueKey);
+                  return true;
+                });
             }
+
+            // Sort by most recent modification
+            listByTagName.sort((postA, postB) => postB.lastModified - postA.lastModified);
+
             renderBlockList(blogListBlock, listByTagName);
             pagination(document.querySelector('.pagination'));
+
+            // Scroll to top of blog list on mobile
+            if (window.innerWidth <= 768) {
+              blogListBlock.scrollIntoView({ behavior: 'smooth' });
+            }
           }
         },
       }, capitalizeFirstLet(eachData.tag))));
