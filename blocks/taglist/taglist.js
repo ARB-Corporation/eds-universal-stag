@@ -11,9 +11,43 @@ export function capitalizeFirstLet(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-async function getListByTagName(tagName) {
+async function getListByTagName(tagNames) {
   const list = await getQueryList();
-  return list.filter((eachList) => eachList.tag?.includes(tagName));
+
+  // Normalize tag input
+  const tags = Array.isArray(tagNames) ? tagNames : [tagNames];
+
+  const url = new URL(window.location.href);
+  const path = url.pathname.split('/').slice(3).join('').replace('/', '');
+
+  // Return all items if no tags provided
+  if (tags.length === 0 || (tags.length === 1 && tags[0] === '')) {
+    const items = list.filter((eachList) => {
+      const segments = eachList.path.split('/').filter(Boolean); // remove empty strings from slashes
+      const thirdSegment = segments[2]; // index 2 gives the third section
+
+      return (
+        !eachList.path.endsWith(path)
+        && thirdSegment === path
+        && eachList.tag?.includes(path)
+      );
+    });
+    return items.sort((x, y) => y.lastModified - x.lastModified);
+  }
+
+  const filtered = list.filter((eachList) => {
+    const segments = eachList.path.split('/').filter(Boolean); // remove empty strings from slashes
+    const thirdSegment = segments[2]; // index 2 gives the third section
+    const itemTags = eachList.tag || [];
+    return (
+      !eachList.path.endsWith(path)
+      && thirdSegment === path
+      && tags.some((tag) => itemTags.includes(tag))
+    );
+  });
+
+  // Sort by most recent
+  return filtered.sort((s, t) => t.lastModified - s.lastModified);
 }
 
 export default async function decorate(block) {
@@ -32,8 +66,7 @@ export default async function decorate(block) {
             this.classList.toggle('active');
 
             // Get all currently active tags
-            const activeTags = Array.from(document.querySelectorAll('li.active'))
-              .map((tag) => tag.dataset.tagName);
+            const activeTags = Array.from(document.querySelectorAll('li.active')).map((tag) => tag.dataset.tagName);
 
             let listByTagName;
 
@@ -42,20 +75,16 @@ export default async function decorate(block) {
               listByTagName = await getListByTagName('');
             } else {
               // Fetch blog lists for all selected tags
-              const allTagLists = await Promise.all(
-                activeTags.map((tag) => getListByTagName(tag)),
-              );
+              listByTagName = await getListByTagName(activeTags);
 
               // Merge and remove duplicates (assuming each item has unique id or slug)
               const seen = new Set();
-              listByTagName = allTagLists
-                .flat()
-                .filter((item) => {
-                  const uniqueKey = item.id || item.slug || JSON.stringify(item);
-                  if (seen.has(uniqueKey)) return false;
-                  seen.add(uniqueKey);
-                  return true;
-                });
+              listByTagName = listByTagName.filter((item) => {
+                const uniqueKey = item.id || item.slug || JSON.stringify(item);
+                if (seen.has(uniqueKey)) return false;
+                seen.add(uniqueKey);
+                return true;
+              });
             }
 
             // Sort by most recent modification
