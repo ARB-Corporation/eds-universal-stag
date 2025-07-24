@@ -74,6 +74,14 @@
     right: -5px;
 }
 
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
   .taglist.taglist-tags ul {
     border-top: none;
   }
