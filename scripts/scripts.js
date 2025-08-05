@@ -12,6 +12,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  fetchPlaceholders,
 } from './aem.js';
 
 /**
@@ -89,6 +90,46 @@ export function decorateMain(main) {
 }
 
 /**
+ * Loads a fragment.
+ * @param {string} path The path to the fragment
+ * @returns {HTMLElement} The root element of the fragment
+ */
+export async function loadFragment(path) {
+  if (path && path.startsWith('/')) {
+    // eslint-disable-next-line no-param-reassign
+    path = path.replace(/(\.plain)?\.html/, '');
+    const resp = await fetch(`${path}.plain.html`);
+    if (resp.ok) {
+      const main = document.createElement('main');
+      main.innerHTML = await resp.text();
+
+      // reset base path for media to fragment base
+      const resetAttributeBase = (tag, attr) => {
+        main.querySelectorAll(`${tag}[${attr}^="./media_"]`).forEach((elem) => {
+          elem[attr] = new URL(elem.getAttribute(attr), new URL(path, window.location)).href;
+        });
+      };
+      resetAttributeBase('img', 'src');
+      resetAttributeBase('source', 'srcset');
+
+      decorateMain(main);
+      await loadSections(main);
+      return main;
+    }
+  }
+  return null;
+}
+
+export async function loadErrorPage(main) {
+  if (window.errorCode === '404') {
+    const placeholder = await fetchPlaceholders();
+    const fragment = await loadFragment(placeholder.notFoundPage);
+    const section = main.querySelector('.section');
+    if (section) section.replaceChildren(fragment);
+  }
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
@@ -96,7 +137,9 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
+
   if (main) {
+    if (window.isErrorPage) loadErrorPage(main);
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
