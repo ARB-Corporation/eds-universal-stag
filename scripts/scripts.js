@@ -16,7 +16,6 @@ import {
   fetchPlaceholders,
 } from './aem.js';
 
-
 export async function loadErrorPage(main) {
   if (window.errorCode === '404') {
     const placeholder = await fetchPlaceholders();
