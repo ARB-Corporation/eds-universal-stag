@@ -14,7 +14,7 @@
     "build:json:filters": "merge-json-cli -i \"models/_component-filters.json\" -o \"component-filters.json\"",
     "prepare": "husky",
     "fix-css": "stylelint \"blocks/**/*.css\" \"styles/*.css\" --fix",
-    "fix-js": "eslint . --ext .json,.js,.mjs --fix"
+    "fix-js": "eslint --fix **/**/*.js"
   },
   "repository": {
     "type": "git",
