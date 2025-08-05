@@ -2,15 +2,16 @@
 <html>
 
 <head>
-  <title>Page not found</title>
+  <title>404</title>
   <script type="text/javascript">
     window.isErrorPage = true;
     window.errorCode = '404';
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="nav" content="https://dev.arb.com.au/content/experience-fragments/arb/au/en/eds-header/master.html">
   <meta property="og:title" content="Page not found">
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
-  <script type="module">
+  <!-- <script type="module">
     window.addEventListener('load', () => {
       if (document.referrer) {
         const { origin, pathname } = new URL(document.referrer);
@@ -25,13 +26,13 @@
         }
       }
     });
-  </script>
+  </script> -->
   <script type="module">
     import { sampleRUM } from '/scripts/aem.js';
     sampleRUM('404', { source: document.referrer });
   </script>
   <link rel="stylesheet" href="/styles/styles.css">
-  <style>
+  <!-- <style>
     main.error {
       min-height: calc(100vh - var(--nav-height));
       display: flex;
@@ -45,8 +46,8 @@
     main.error .error-number text {
       font-family: monospace;
     }
-  </style>
-  <link rel="stylesheet" href="/styles/lazy-styles.css">
+  </style> -->
+  <!-- <link rel="stylesheet" href="/styles/lazy-styles.css"> -->
 </head>
 
 <body>
