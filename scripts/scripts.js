@@ -123,11 +123,6 @@ export async function loadFragment(path) {
 export async function loadErrorPage(main) {
   if (window.errorCode === '404') {
     const placeholder = await fetchPlaceholders();
-    // const fragmentPath = placeholder.notFoundPage;
-    // const fragmentLink = document.createElement('a');
-    // fragmentLink.href = window.location.origin + fragmentPath;
-    // fragmentLink.textContent = fragmentPath;
-    // const fragment = buildBlock('fragment', [[fragmentLink]]);
     const fragment = await loadFragment(placeholder.notFoundPage);
     const section = main.querySelector('.section');
     if (section) section.replaceChildren(fragment);
