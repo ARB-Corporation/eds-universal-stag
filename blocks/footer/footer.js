@@ -13,13 +13,13 @@ export default async function decorate(block) {
     appendXF(block, footerMeta);
     return block;
   }
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '';
   const fragment = await loadFragment(footerPath);
 
   // decorate footer DOM
   block.textContent = '';
   const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  while (fragment?.firstElementChild) footer.append(fragment.firstElementChild);
 
   block.append(footer);
   return block;

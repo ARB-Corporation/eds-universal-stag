@@ -12,7 +12,24 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  buildBlock,
+  fetchPlaceholders,
 } from './aem.js';
+
+
+export async function loadErrorPage(main) {
+  if (window.errorCode === '404') {
+    const placeholder = await fetchPlaceholders();
+    const fragmentPath = placeholder.notFoundPage;
+    const fragmentLink = document.createElement('a');
+    fragmentLink.href = fragmentPath;
+    fragmentLink.textContent = fragmentPath;
+    const fragment = buildBlock('fragment', [[fragmentLink]]);
+
+    const section = main.querySelector('.section');
+    if (section) section.replaceChildren(fragment);
+  }
+}
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -96,7 +113,9 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
+
   if (main) {
+    if (window.isErrorPage) loadErrorPage(main);
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
