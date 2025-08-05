@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { loadFragment } from '../../scripts/scripts.js';
 import { appendXF } from '../experience-fragment/experience-fragment.js';
-import { loadFragment } from '../fragment/fragment.js';
 
 /**
  * loads and decorates the footer
