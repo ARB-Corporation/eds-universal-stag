@@ -111,6 +111,69 @@ export default async function decorate(block) {
     ),
   );
 
+  try {
+    const taglist = (await getQueryList()) || [];
+    const url = new URL(window.location.href);
+    const path = url.pathname.split('/').slice(3).join('/');
+
+    const items = taglist.filter((eachList) => {
+      if (!eachList || typeof eachList.path !== 'string') return false;
+
+      const segments = eachList.path.split('/').filter(Boolean);
+      const thirdSegment = segments[2] || '';
+      const firstPathSegment = path.split('/')[0] || '';
+
+      return (
+        !eachList.path.endsWith(path)
+        && thirdSegment === firstPathSegment
+        && (
+          Array.isArray(eachList.tag)
+            ? eachList.tag.includes(firstPathSegment)
+            : typeof eachList.tag === 'string'
+            && eachList.tag.includes(firstPathSegment)
+        )
+      );
+    });
+
+    const uniqueTags = [
+      ...new Set(
+        items.flatMap((obj) => {
+          if (!obj || typeof obj.tag !== 'string') return [];
+
+          return obj.tag
+            .split(',')
+            .map((t) => t.trim())
+            .filter(Boolean)
+            .map((t) => t.split('/').pop());
+        }),
+      ),
+    ];
+
+    window.uniqueTags = uniqueTags;
+
+    if (typeof allTag !== 'undefined' && allTag?.forEach) {
+      allTag.forEach((anchorEl) => {
+        if (!anchorEl) return;
+
+        const liEl = anchorEl.querySelector('li[data-tag-name]');
+        if (!liEl) return;
+
+        const tagName = liEl.dataset.tagName?.trim().toLowerCase() || '';
+
+        const isMatch = window.uniqueTags.some(
+          (t) => t.toLowerCase() === tagName,
+        );
+
+        if (!isMatch) {
+          liEl.classList.add('dsp-n');
+        }
+      });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log('Error processing tags:', error);
+  }
+
   if (window.innerWidth < 769) {
     decorateAccordion(block);
   }

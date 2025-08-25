@@ -1,5 +1,9 @@
 @import url('../accordion/accordion.css');
 
+.dsp-n {
+  display: none;
+}
+
 .taglist.taglist-container {
   border-radius: 3px;
   border: 1px solid #304F6C1A;
