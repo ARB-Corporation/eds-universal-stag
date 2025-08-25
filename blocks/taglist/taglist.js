@@ -174,7 +174,6 @@ export default async function decorate(block) {
     console.log('Error processing tags:', error);
   }
 
-
   if (window.innerWidth < 769) {
     decorateAccordion(block);
   }
