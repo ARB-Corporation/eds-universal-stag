@@ -114,13 +114,13 @@ export default async function decorate(block) {
   try {
     const taglist = (await getQueryList()) || [];
     const url = new URL(window.location.href);
-    const path = url.pathname.split('/').slice(3).join('/'); 
+    const path = url.pathname.split('/').slice(3).join('/');
 
     const items = taglist.filter((eachList) => {
       if (!eachList || typeof eachList.path !== 'string') return false;
 
       const segments = eachList.path.split('/').filter(Boolean);
-      const thirdSegment = segments[2] || ''; 
+      const thirdSegment = segments[2] || '';
       const firstPathSegment = path.split('/')[0] || '';
 
       return (
@@ -138,7 +138,7 @@ export default async function decorate(block) {
     const uniqueTags = [
       ...new Set(
         items.flatMap((obj) => {
-          if (!obj || typeof obj.tag !== 'string') return []; 
+          if (!obj || typeof obj.tag !== 'string') return [];
 
           return obj.tag
             .split(',')
@@ -173,6 +173,7 @@ export default async function decorate(block) {
     // eslint-disable-next-line no-console
     console.log('Error processing tags:', error);
   }
+
 
   if (window.innerWidth < 769) {
     decorateAccordion(block);
