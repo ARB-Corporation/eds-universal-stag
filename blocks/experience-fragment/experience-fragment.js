@@ -62,7 +62,6 @@ export async function appendXF(block, xfPath) {
         document.head.append(meta.cloneNode());
       }
     });
-    block.append(div.querySelector('.root'));
     div.querySelectorAll('script').forEach((link) => {
       const exculdeLink = [
         '/clientlibs/granite/',
@@ -82,6 +81,7 @@ export async function appendXF(block, xfPath) {
         }
       }
     });
+    block.append(div.querySelector('.root'));
     if (window.isLast) {
       setTimeout(() => {
         const event = new Event('CustomDOMContentLoaded');
