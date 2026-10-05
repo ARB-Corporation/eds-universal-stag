@@ -57,6 +57,11 @@ export async function appendXF(block, xfPath) {
         console.error(error); // eslint-disable-line
       }
     });
+    div.querySelectorAll('meta[name="graphql"], meta[name="backend"]').forEach((meta) => {
+      if (!document.head.querySelector(`meta[name="${meta.name}"]`)) {
+        document.head.append(meta.cloneNode());
+      }
+    });
     block.append(div.querySelector('.root'));
     div.querySelectorAll('script').forEach((link) => {
       const exculdeLink = [
