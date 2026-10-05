@@ -57,7 +57,11 @@ export async function appendXF(block, xfPath) {
         console.error(error); // eslint-disable-line
       }
     });
-    block.append(div.querySelector('.root'));
+    div.querySelectorAll('meta[name="graphql"], meta[name="backend"]').forEach((meta) => {
+      if (!document.head.querySelector(`meta[name="${meta.name}"]`)) {
+        document.head.append(meta.cloneNode());
+      }
+    });
     div.querySelectorAll('script').forEach((link) => {
       const exculdeLink = [
         '/clientlibs/granite/',
@@ -77,6 +81,7 @@ export async function appendXF(block, xfPath) {
         }
       }
     });
+    block.append(div.querySelector('.root'));
     if (window.isLast) {
       setTimeout(() => {
         const event = new Event('CustomDOMContentLoaded');
